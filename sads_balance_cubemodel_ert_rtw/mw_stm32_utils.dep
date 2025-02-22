@@ -1,0 +1,2 @@
+mw_stm32_utils.o: \
+ C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_utils.c
