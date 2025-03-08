@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.62
+ * Model version                  : 7.72
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Fri Feb 21 11:40:41 2025
+ * C/C++ source code generated on : Fri Mar  7 14:43:09 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -19,6 +19,7 @@
 
 #include "sads_balance_cubemodel.h"
 #include "sads_balance_cubemodel_types.h"
+#include <string.h>
 #include "rtwtypes.h"
 #include "mw_stm32_i2c_ll.h"
 #include "sads_balance_cubemodel_private.h"
@@ -43,7 +44,7 @@ static void sads_balance_c_SystemCore_setup(stm32cube_blocks_I2CControlle_T *obj
   obj->isSetupComplete = false;
 
   /* Start for MATLABSystem: '<S1>/Check Pipe Status' incorporates:
-   *  MATLABSystem: '<S2>/I2C Controller Read2'
+   *  MATLABSystem: '<S3>/I2C Controller Read2'
    */
   obj->isInitialized = 1;
   c.instance = I2C1;
@@ -60,10 +61,8 @@ static void sads_balance_c_SystemCore_setup(stm32cube_blocks_I2CControlle_T *obj
 /* Model step function */
 void sads_balance_cubemodel_step(void)
 {
-  int32_T i;
   uint32_T status;
-  uint8_T b_bytesIn[53];
-  uint8_T rtb_CheckPipeStatus_o1_0[4];
+  uint8_T b_bytesIn[76];
   uint8_T txData;
 
   /* Reset subsysRan breadcrumbs */
@@ -77,17 +76,23 @@ void sads_balance_cubemodel_step(void)
   if (status == 0U) {
     I2C_Controller_ReceiveData_Polling
       (sads_balance_cubemodel_DW.obj_l.MW_I2C_HANDLE, 107,
-       &rtb_CheckPipeStatus_o1_0[0], 4U, false, false, 1U);
+       &sads_balance_cubemodel_B.CheckPipeStatus_o1[0], 4U, false, false, 1U);
   } else {
-    rtb_CheckPipeStatus_o1_0[2] = 0U;
+    /* MATLABSystem: '<S1>/Check Pipe Status' */
+    sads_balance_cubemodel_B.CheckPipeStatus_o1[0] = 0U;
+    sads_balance_cubemodel_B.CheckPipeStatus_o1[1] = 0U;
+    sads_balance_cubemodel_B.CheckPipeStatus_o1[2] = 0U;
+    sads_balance_cubemodel_B.CheckPipeStatus_o1[3] = 0U;
   }
 
+  /* End of MATLABSystem: '<S1>/Check Pipe Status' */
+
   /* Outputs for Enabled SubSystem: '<S1>/Read Incoming Data if data available' incorporates:
-   *  EnablePort: '<S2>/Enable'
+   *  EnablePort: '<S3>/Enable'
    */
-  if (rtb_CheckPipeStatus_o1_0[2] > 0) {
-    /* MATLABSystem: '<S2>/I2C Controller Read2' incorporates:
-     *  MATLABSystem: '<S2>/MTi Driver'
+  if (sads_balance_cubemodel_B.CheckPipeStatus_o1[2] > 0) {
+    /* MATLABSystem: '<S3>/I2C Controller Read2' incorporates:
+     *  MATLABSystem: '<S3>/MTi Driver'
      */
     txData = 6U;
     status = I2C_Controller_TransmitData_Polling
@@ -95,43 +100,43 @@ void sads_balance_cubemodel_step(void)
        1U);
     if (status == 0U) {
       I2C_Controller_ReceiveData_Polling
-        (sads_balance_cubemodel_DW.obj.MW_I2C_HANDLE, 107, &b_bytesIn[0], 53U,
+        (sads_balance_cubemodel_DW.obj.MW_I2C_HANDLE, 107, &b_bytesIn[0], 76U,
          false, false, 1U);
     } else {
-      /* MATLABSystem: '<S2>/MTi Driver' */
-      for (i = 0; i < 53; i++) {
-        b_bytesIn[i] = 0U;
-      }
+      /* MATLABSystem: '<S3>/MTi Driver' */
+      memset(&b_bytesIn[0], 0, 76U * sizeof(uint8_T));
     }
 
-    /* End of MATLABSystem: '<S2>/I2C Controller Read2' */
+    /* End of MATLABSystem: '<S3>/I2C Controller Read2' */
 
-    /* MATLABSystem: '<S2>/MTi Driver' */
+    /* MATLABSystem: '<S3>/MTi Driver' */
     /*         %% Define input properties */
     sads_balance_cubemodel_B.MTiDriver_o1[0] = 0.0F;
     sads_balance_cubemodel_B.MTiDriver_o1[1] = 0.0F;
     sads_balance_cubemodel_B.MTiDriver_o1[2] = 0.0F;
 
-    /* MATLABSystem: '<S2>/MTi Driver' */
+    /* MATLABSystem: '<S3>/MTi Driver' */
     sads_balance_cubemodel_B.MTiDriver_o2[0] = 0.0F;
     sads_balance_cubemodel_B.MTiDriver_o2[1] = 0.0F;
     sads_balance_cubemodel_B.MTiDriver_o2[2] = 0.0F;
     sads_balance_cubemodel_B.MTiDriver_o2[3] = 0.0F;
 
-    /* MATLABSystem: '<S2>/MTi Driver' */
+    /* MATLABSystem: '<S3>/MTi Driver' */
     sads_balance_cubemodel_B.MTiDriver_o3[0] = 0.0F;
     sads_balance_cubemodel_B.MTiDriver_o3[1] = 0.0F;
     sads_balance_cubemodel_B.MTiDriver_o3[2] = 0.0F;
 
-    /* MATLABSystem: '<S2>/MTi Driver' */
+    /* MATLABSystem: '<S3>/MTi Driver' */
+    sads_balance_cubemodel_B.MTiDriver_o4 = 0U;
+
     /*  Call C-function implementing device output */
     MTi_Driver_Step(&b_bytesIn[0], &sads_balance_cubemodel_B.MTiDriver_o1[0],
                     &sads_balance_cubemodel_B.MTiDriver_o2[0],
-                    &sads_balance_cubemodel_B.MTiDriver_o3[0]);
+                    &sads_balance_cubemodel_B.MTiDriver_o3[0],
+                    &sads_balance_cubemodel_B.MTiDriver_o4);
     srUpdateBC(sads_balance_cubemodel_DW.ReadIncomingDataifdataavailable);
   }
 
-  /* End of MATLABSystem: '<S1>/Check Pipe Status' */
   /* End of Outputs for SubSystem: '<S1>/Read Incoming Data if data available' */
 
   /* Update absolute time for base rate */
@@ -153,10 +158,10 @@ void sads_balance_cubemodel_initialize(void)
   sads_balance_cubemodel_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  sads_balance_cubemodel_M->Sizes.checksums[0] = (993480652U);
-  sads_balance_cubemodel_M->Sizes.checksums[1] = (1544468600U);
-  sads_balance_cubemodel_M->Sizes.checksums[2] = (518175809U);
-  sads_balance_cubemodel_M->Sizes.checksums[3] = (2381944792U);
+  sads_balance_cubemodel_M->Sizes.checksums[0] = (2938750504U);
+  sads_balance_cubemodel_M->Sizes.checksums[1] = (1198984848U);
+  sads_balance_cubemodel_M->Sizes.checksums[2] = (1797115625U);
+  sads_balance_cubemodel_M->Sizes.checksums[3] = (761091149U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -180,13 +185,12 @@ void sads_balance_cubemodel_initialize(void)
                 (sads_balance_cubemodel_M));
   }
 
-  /* SystemInitialize for Enabled SubSystem: '<S1>/Read Incoming Data if data available' */
-  /* Start for MATLABSystem: '<S2>/I2C Controller Read2' */
+  /* Start for MATLABSystem: '<S3>/I2C Controller Read2' */
   sads_balance_cubemodel_DW.obj.isInitialized = 0;
   sads_balance_cubemodel_DW.obj.matlabCodegenIsDeleted = false;
   sads_balance_c_SystemCore_setup(&sads_balance_cubemodel_DW.obj);
 
-  /* Start for MATLABSystem: '<S2>/MTi Driver' */
+  /* Start for MATLABSystem: '<S3>/MTi Driver' */
   /*  Constructor */
   /*  Support name-value pair arguments when constructing the object. */
   sads_balance_cubemodel_DW.obj_m.matlabCodegenIsDeleted = false;
@@ -197,23 +201,23 @@ void sads_balance_cubemodel_initialize(void)
   MTi_Driver_Init();
   sads_balance_cubemodel_DW.obj_m.isSetupComplete = true;
 
-  /* SystemInitialize for MATLABSystem: '<S2>/MTi Driver' incorporates:
-   *  Outport: '<S2>/euler'
+  /* SystemInitialize for MATLABSystem: '<S3>/MTi Driver' incorporates:
+   *  Outport: '<S3>/g_body'
    */
-  sads_balance_cubemodel_B.MTiDriver_o1[0] = sads_balance_cubemodel_P.euler_Y0;
-  sads_balance_cubemodel_B.MTiDriver_o1[1] = sads_balance_cubemodel_P.euler_Y0;
-  sads_balance_cubemodel_B.MTiDriver_o1[2] = sads_balance_cubemodel_P.euler_Y0;
+  sads_balance_cubemodel_B.MTiDriver_o1[0] = sads_balance_cubemodel_P.g_body_Y0;
+  sads_balance_cubemodel_B.MTiDriver_o1[1] = sads_balance_cubemodel_P.g_body_Y0;
+  sads_balance_cubemodel_B.MTiDriver_o1[2] = sads_balance_cubemodel_P.g_body_Y0;
 
-  /* SystemInitialize for MATLABSystem: '<S2>/MTi Driver' incorporates:
-   *  Outport: '<S2>/quat'
+  /* SystemInitialize for MATLABSystem: '<S3>/MTi Driver' incorporates:
+   *  Outport: '<S3>/quat'
    */
   sads_balance_cubemodel_B.MTiDriver_o2[0] = sads_balance_cubemodel_P.quat_Y0;
   sads_balance_cubemodel_B.MTiDriver_o2[1] = sads_balance_cubemodel_P.quat_Y0;
   sads_balance_cubemodel_B.MTiDriver_o2[2] = sads_balance_cubemodel_P.quat_Y0;
   sads_balance_cubemodel_B.MTiDriver_o2[3] = sads_balance_cubemodel_P.quat_Y0;
 
-  /* SystemInitialize for MATLABSystem: '<S2>/MTi Driver' incorporates:
-   *  Outport: '<S2>/bodyRates'
+  /* SystemInitialize for MATLABSystem: '<S3>/MTi Driver' incorporates:
+   *  Outport: '<S3>/bodyRates'
    */
   sads_balance_cubemodel_B.MTiDriver_o3[0] =
     sads_balance_cubemodel_P.bodyRates_Y0;
@@ -241,20 +245,19 @@ void sads_balance_cubemodel_terminate(void)
   /* End of Terminate for MATLABSystem: '<S1>/Check Pipe Status' */
 
   /* Terminate for Enabled SubSystem: '<S1>/Read Incoming Data if data available' */
-  /* Terminate for MATLABSystem: '<S2>/I2C Controller Read2' */
+  /* Terminate for MATLABSystem: '<S3>/I2C Controller Read2' */
   if (!sads_balance_cubemodel_DW.obj.matlabCodegenIsDeleted) {
     sads_balance_cubemodel_DW.obj.matlabCodegenIsDeleted = true;
   }
 
-  /* End of Terminate for MATLABSystem: '<S2>/I2C Controller Read2' */
+  /* End of Terminate for MATLABSystem: '<S3>/I2C Controller Read2' */
 
-  /* Terminate for MATLABSystem: '<S2>/MTi Driver' */
+  /* Terminate for MATLABSystem: '<S3>/MTi Driver' */
   if (!sads_balance_cubemodel_DW.obj_m.matlabCodegenIsDeleted) {
     sads_balance_cubemodel_DW.obj_m.matlabCodegenIsDeleted = true;
   }
 
-  /* End of Terminate for MATLABSystem: '<S2>/MTi Driver' */
-  /* End of Terminate for SubSystem: '<S1>/Read Incoming Data if data available' */
+  /* End of Terminate for MATLABSystem: '<S3>/MTi Driver' */
 }
 
 /*

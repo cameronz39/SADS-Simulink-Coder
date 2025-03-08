@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.62
+ * Model version                  : 7.72
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Fri Feb 21 11:40:41 2025
+ * C/C++ source code generated on : Fri Mar  7 14:43:09 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -74,30 +74,32 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real32_T MTiDriver_o1[3];            /* '<S2>/MTi Driver' */
-  real32_T MTiDriver_o2[4];            /* '<S2>/MTi Driver' */
-  real32_T MTiDriver_o3[3];            /* '<S2>/MTi Driver' */
+  real32_T MTiDriver_o1[3];            /* '<S3>/MTi Driver' */
+  real32_T MTiDriver_o2[4];            /* '<S3>/MTi Driver' */
+  real32_T MTiDriver_o3[3];            /* '<S3>/MTi Driver' */
+  uint16_T MTiDriver_o4;               /* '<S3>/MTi Driver' */
+  uint8_T CheckPipeStatus_o1[4];       /* '<S1>/Check Pipe Status' */
 } B_sads_balance_cubemodel_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  stm32cube_blocks_I2CControlle_T obj; /* '<S2>/I2C Controller Read2' */
+  stm32cube_blocks_I2CControlle_T obj; /* '<S3>/I2C Controller Read2' */
   stm32cube_blocks_I2CControlle_T obj_l;/* '<S1>/Check Pipe Status' */
-  MTi_Driver_Sys_Obj_sads_balan_T obj_m;/* '<S2>/MTi Driver' */
+  MTi_Driver_Sys_Obj_sads_balan_T obj_m;/* '<S3>/MTi Driver' */
   int8_T ReadIncomingDataifdataavailable;
                                /* '<S1>/Read Incoming Data if data available' */
 } DW_sads_balance_cubemodel_T;
 
 /* Parameters (default storage) */
 struct P_sads_balance_cubemodel_T_ {
-  real32_T euler_Y0;                   /* Computed Parameter: euler_Y0
-                                        * Referenced by: '<S2>/euler'
+  real32_T g_body_Y0;                  /* Computed Parameter: g_body_Y0
+                                        * Referenced by: '<S3>/g_body'
                                         */
   real32_T quat_Y0;                    /* Computed Parameter: quat_Y0
-                                        * Referenced by: '<S2>/quat'
+                                        * Referenced by: '<S3>/quat'
                                         */
   real32_T bodyRates_Y0;               /* Computed Parameter: bodyRates_Y0
-                                        * Referenced by: '<S2>/bodyRates'
+                                        * Referenced by: '<S3>/bodyRates'
                                         */
 };
 
@@ -159,6 +161,40 @@ extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 
 /*-
+ * These blocks were eliminated from the model due to optimizations:
+ *
+ * Block '<Root>/Cast To Single' : Unused code path elimination
+ * Block '<Root>/Cast to int32' : Unused code path elimination
+ * Block '<Root>/Derivative' : Unused code path elimination
+ * Block '<Root>/Discrete-Time Integrator' : Unused code path elimination
+ * Block '<Root>/Integral' : Unused code path elimination
+ * Block '<Root>/Proportional' : Unused code path elimination
+ * Block '<Root>/Proportional Gain' : Unused code path elimination
+ * Block '<S4>/Product' : Unused code path elimination
+ * Block '<S4>/Product1' : Unused code path elimination
+ * Block '<S4>/Product2' : Unused code path elimination
+ * Block '<S4>/Product3' : Unused code path elimination
+ * Block '<S4>/Sum' : Unused code path elimination
+ * Block '<S5>/Product' : Unused code path elimination
+ * Block '<S5>/Product1' : Unused code path elimination
+ * Block '<S5>/Product2' : Unused code path elimination
+ * Block '<S5>/Product3' : Unused code path elimination
+ * Block '<S5>/Sum' : Unused code path elimination
+ * Block '<S6>/Product' : Unused code path elimination
+ * Block '<S6>/Product1' : Unused code path elimination
+ * Block '<S6>/Product2' : Unused code path elimination
+ * Block '<S6>/Product3' : Unused code path elimination
+ * Block '<S6>/Sum' : Unused code path elimination
+ * Block '<S7>/Product' : Unused code path elimination
+ * Block '<S7>/Product1' : Unused code path elimination
+ * Block '<S7>/Product2' : Unused code path elimination
+ * Block '<S7>/Product3' : Unused code path elimination
+ * Block '<S7>/Sum' : Unused code path elimination
+ * Block '<Root>/Sum' : Unused code path elimination
+ * Block '<Root>/q_d' : Unused code path elimination
+ */
+
+/*-
  * The generated code includes comments that allow you to trace directly
  * back to the appropriate location in the model.  The basic format
  * is <system>/block_name, where system is the system number (uniquely
@@ -174,7 +210,12 @@ extern volatile boolean_T runModel;
  *
  * '<Root>' : 'sads_balance_cubemodel'
  * '<S1>'   : 'sads_balance_cubemodel/IMU I2C Read'
- * '<S2>'   : 'sads_balance_cubemodel/IMU I2C Read/Read Incoming Data if data available'
+ * '<S2>'   : 'sads_balance_cubemodel/Quaternion Multiplication'
+ * '<S3>'   : 'sads_balance_cubemodel/IMU I2C Read/Read Incoming Data if data available'
+ * '<S4>'   : 'sads_balance_cubemodel/Quaternion Multiplication/q0'
+ * '<S5>'   : 'sads_balance_cubemodel/Quaternion Multiplication/q1'
+ * '<S6>'   : 'sads_balance_cubemodel/Quaternion Multiplication/q2'
+ * '<S7>'   : 'sads_balance_cubemodel/Quaternion Multiplication/q3'
  */
 #endif                                 /* sads_balance_cubemodel_h_ */
 

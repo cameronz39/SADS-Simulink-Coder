@@ -7,9 +7,9 @@
  *
  * Code generation for model "sads_balance_cubemodel".
  *
- * Model version              : 7.62
+ * Model version              : 7.72
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Fri Feb 21 11:40:41 2025
+ * C source code generated on : Fri Mar  7 14:43:09 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex

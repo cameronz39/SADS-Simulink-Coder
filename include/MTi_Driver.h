@@ -10,7 +10,7 @@ extern "C" {
 #include <xbus.h>
 
 void MTi_Driver_Init(void);
-void MTi_Driver_Step(uint8_t *bytesIn, float euler[3], float quat[4], float bodyRates[3]);
+void MTi_Driver_Step(uint8_t *bytesIn, float g_body[3], float quat[4], float bodyRates[3], uint16_t *debug);
 void MTi_Driver_Terminate(void);
 
 #ifdef __cplusplus
