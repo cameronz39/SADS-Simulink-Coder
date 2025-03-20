@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.62
+ * Model version                  : 7.84
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Fri Feb 21 11:40:41 2025
+ * C/C++ source code generated on : Tue Mar 18 18:41:56 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,13 +20,7 @@
 #ifndef sads_balance_cubemodel_private_h_
 #define sads_balance_cubemodel_private_h_
 #include "rtwtypes.h"
-#include "multiword_types.h"
 #include "sads_balance_cubemodel_types.h"
-
-/* Private macros used by the generated code to access rtModel */
-#ifndef rtmSetTFinal
-#define rtmSetTFinal(rtm, val)         ((rtm)->Timing.tFinal = (val))
-#endif
 #endif                                 /* sads_balance_cubemodel_private_h_ */
 
 /*

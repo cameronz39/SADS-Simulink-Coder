@@ -2,9 +2,7 @@ sads_balance_cubemodel_data.o: \
  C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_data.c \
  C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel.h \
  C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/rtwtypes.h \
- C:/Program\ Files/MATLAB/R2024b/simulink/include/rtw_extmode.h \
- C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemodel_ert_rtw/rtwtypes.h \
- C:/Program\ Files/MATLAB/R2024b/simulink/include/sysran_types.h \
+ C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/StepperDrive.h \
  C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_i2c_ll.h \
  C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemx/Core/Inc/main.h \
  C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
@@ -50,7 +48,12 @@ sads_balance_cubemodel_data.o: \
  C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/board.h \
  C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/xbus.h \
  C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/board.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_nvic.h \
  C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_types.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/stm_timer_ll.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_types.h \
+ C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemodel_ert_rtw/rtwtypes.h \
+ C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/rt_nonfinite.h \
  C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/MW_target_hardware_resources.h \
  C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_board_header.h \
  C:/Program\ Files/MATLAB/R2024b/toolbox/target/shared/armcortexmbase/scheduler/include/SysTickScheduler.h \
@@ -58,9 +61,7 @@ sads_balance_cubemodel_data.o: \
  C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemodel_ert_rtw/MW_target_hardware_resources.h
 C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel.h:
 C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/rtwtypes.h:
-C:/Program\ Files/MATLAB/R2024b/simulink/include/rtw_extmode.h:
-C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemodel_ert_rtw/rtwtypes.h:
-C:/Program\ Files/MATLAB/R2024b/simulink/include/sysran_types.h:
+C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/StepperDrive.h:
 C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_i2c_ll.h:
 C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemx/Core/Inc/main.h:
 C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -106,7 +107,12 @@ C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/MTi_Driver.h:
 C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/board.h:
 C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/xbus.h:
 C:/Users/camer/OneDrive/Desktop/SADS\ Balance/include/board.h:
+C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_nvic.h:
 C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_types.h:
+C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/stm_timer_ll.h:
+C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_types.h:
+C:/Users/camer/OneDrive/Desktop/SADS\ Balance/sads_balance_cubemodel_ert_rtw/rtwtypes.h:
+C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/rt_nonfinite.h:
 C:/Users/camer/OneDrive/Desktop/SADSBA~1/sads_balance_cubemodel_ert_rtw/MW_target_hardware_resources.h:
 C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/include/mw_stm32_board_header.h:
 C:/Program\ Files/MATLAB/R2024b/toolbox/target/shared/armcortexmbase/scheduler/include/SysTickScheduler.h:

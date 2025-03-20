@@ -83,6 +83,8 @@ void Error_Handler(void);
 #define I2C_ADD2_GPIO_Port GPIOA
 #define STEP4_Pin LL_GPIO_PIN_1
 #define STEP4_GPIO_Port GPIOB
+#define DIR3_Pin LL_GPIO_PIN_10
+#define DIR3_GPIO_Port GPIOB
 #define STEP1_Pin LL_GPIO_PIN_13
 #define STEP1_GPIO_Port GPIOB
 #define STEP2_Pin LL_GPIO_PIN_14
