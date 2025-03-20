@@ -2,7 +2,7 @@
 ## Makefile generated for component 'sads_balance_cubemodel'. 
 ## 
 ## Makefile     : sads_balance_cubemodel.mk
-## Generated on : Fri Mar 07 14:19:10 2025
+## Generated on : Tue Mar 18 18:42:00 2025
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/sads_balance_cubemodel.elf
 ## Product type : executable
 ## 
@@ -151,44 +151,45 @@ RUN                 =
 # "Faster Builds" Build Configuration
 #----------------------------------------
 
+ARFLAGS              = ruvs
+ASFLAGS              = -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
+                       -Wall \
+                       -x assembler-with-cpp \
+                       $(ASFLAGS_ADDITIONAL) \
+                       $(DEFINES) \
+                       $(INCLUDES) \
+                       -c
+OBJCOPYFLAGS_BIN     = -O binary $(PRODUCT) $(PRODUCT_BIN)
+CFLAGS               = $(FDATASECTIONS_FLG) \
+                       -Wall \
+                       -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
+                       -c \
+                       -O0
+CPPFLAGS             = -std=gnu++14 \
+                       -fno-rtti \
+                       -fno-exceptions \
+                       $(FDATASECTIONS_FLG) \
+                       -Wall \
+                       -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
+                       -c \
+                       -O0
+CPP_LDFLAGS          = -Wl,--gc-sections \
+                       -Wl,-Map="$(PRODUCT_NAME).map"
+CPP_SHAREDLIB_LDFLAGS  =
+DOWNLOAD_FLAGS       =
+EXESIZE_FLAGS        = $(PRODUCT)
+EXECUTE_FLAGS        =
+OBJCOPYFLAGS_HEX     = -O ihex $(PRODUCT) $(PRODUCT_HEX)
+LDFLAGS              = -Wl,--gc-sections \
+                       -Wl,-Map="$(PRODUCT_NAME).map"
 MEX_CPPFLAGS         =
 MEX_CPPLDFLAGS       =
 MEX_CFLAGS           =
 MEX_LDFLAGS          =
+MAKE_FLAGS           = -f $(MAKEFILE)
+SHAREDLIB_LDFLAGS    =
 
 
-
-#---------------------------
-# Model-Specific Options
-#---------------------------
-
-ASFLAGS = -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  -Wall -x assembler-with-cpp $(ASFLAGS_ADDITIONAL) $(DEFINES) $(INCLUDES) -c
-
-CFLAGS = $(FDATASECTIONS_FLG) -Wall -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  -c -O0 -g
-
-LDFLAGS = -Wl,--gc-sections -Wl,-Map="$(PRODUCT_NAME).map" -g
-
-SHAREDLIB_LDFLAGS = -g
-
-CPPFLAGS = -std=gnu++14 -fno-rtti -fno-exceptions $(FDATASECTIONS_FLG) -Wall -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  -c -O0 -g
-
-CPP_LDFLAGS = -Wl,--gc-sections -Wl,-Map="$(PRODUCT_NAME).map" -g
-
-CPP_SHAREDLIB_LDFLAGS = -g
-
-ARFLAGS = ruvs
-
-OBJCOPYFLAGS_BIN = -O binary $(PRODUCT) $(PRODUCT_BIN)
-
-OBJCOPYFLAGS_HEX = -O ihex $(PRODUCT) $(PRODUCT_HEX)
-
-EXESIZE_FLAGS = $(PRODUCT)
-
-DOWNLOAD_FLAGS = 
-
-EXECUTE_FLAGS = 
-
-MAKE_FLAGS = -f $(MAKEFILE)
 
 ###########################################################################
 ## OUTPUT INFO
@@ -210,11 +211,11 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DUSE_FULL_LL_DRIVER -DSTM32F446xx -DUSE_HAL_DRIVER -DMW_TIMEBASESOURCE=TIM5 -DMW_CONNECTIVITY_UART=USART2_BASE -DMW_CONNECTIVITY_RX_DMA=DMA1 -DMW_USART2_RX_DMA_STREAM=5 -DMW_USART2_RX_DMA_ENABLED=DMA1_Stream5_IRQHandler -DMW_CONNECTIVITY_RX_DMAStream=LL_DMA_STREAM_5 -DMW_CONNECTIVITY_RX_BUFFER=GET_USART2_RECEIVE_BUFFER -DMW_USART2_RECEIVE_BUFFER_SIZE=1024 -DMW_USART2_ENABLED=1
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DEXT_MODE=1 -DINTEGER_CODE=0 -DMT=0
+DEFINES_ = -DMW_TIM2_ENABLED=1 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DUSE_FULL_LL_DRIVER -DSTM32F446xx -DUSE_HAL_DRIVER -DMW_TIMEBASESOURCE=TIM5
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
-DEFINES_OPTS = -DXCP_DAQ_SUPPORT -DXCP_CALIBRATION_SUPPORT -DXCP_TIMESTAMP_SUPPORT -DXCP_SET_MTA_SUPPORT -DEXTMODE_XCP_TRIGGER_SUPPORT -DINTERNAL_XCP_MEM_BLOCK_1_SIZE=128 -DINTERNAL_XCP_MEM_BLOCK_1_NUMBER=1 -DINTERNAL_XCP_MEM_BLOCK_2_SIZE=168 -DINTERNAL_XCP_MEM_BLOCK_2_NUMBER=4 -DINTERNAL_XCP_MEM_BLOCK_3_SIZE=40 -DINTERNAL_XCP_MEM_BLOCK_3_NUMBER=4 -DINTERNAL_XCP_MEM_RESERVED_POOLS_TOTAL_SIZE=2200 -DINTERNAL_XCP_MEM_RESERVED_POOLS_NUMBER=5 -DXCP_MEM_DAQ_RESERVED_POOL_BLOCKS_NUMBER=3 -DXCP_MEM_DAQ_RESERVED_POOLS_NUMBER=1 -DXCP_MIN_EVENT_NO_RESERVED_POOL=1 -DXCP_MAX_CTO_SIZE=255 -DXCP_MAX_DTO_SIZE=65532 -DXCP_MAX_ODT_ENTRY_SIZE=255 -DEXTMODE_STATIC -DEXTMODE_STATIC_SIZE=8000 -DON_TARGET_WAIT_FOR_START=1 -DTID01EQ=0
-DEFINES_SKIPFORSIL = -DXCP_CUSTOM_PLATFORM -D__FPU_PRESENT=1U -D__FPU_USED=1U -DEXTMODE_DISABLE_ARGS_PROCESSING -DSTACK_SIZE=512 -DRT
+DEFINES_OPTS = -DTID01EQ=0
+DEFINES_SKIPFORSIL = -DMW_SCHEDULER_PRIORITY=3 -DXCP_CUSTOM_PLATFORM -DXCP_MEM_DAQ_RESERVED_POOL_BLOCKS_NUMBER=10 -D__FPU_PRESENT=1U -D__FPU_USED=1U -DSTACK_SIZE=512 -DRT -DHWI_TIM2_IRQHandler
 DEFINES_STANDARD = -DMODEL=sads_balance_cubemodel -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
@@ -223,7 +224,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_i2c_v1_ll.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_utils.c $(START_DIR)/src/MTi_Driver.c $(START_DIR)/src/xbus.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_data.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/overrideHALDelay.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/platform_timer.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/rtiostream_serial.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_usart.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/src/sys_arch.c $(START_DIR)/sads_balance_cubemx/Core/Src/main.c $(START_DIR)/sads_balance_cubemx/Core/Src/gpio.c $(START_DIR)/sads_balance_cubemx/Core/Src/dma.c $(START_DIR)/sads_balance_cubemx/Core/Src/i2c.c $(START_DIR)/sads_balance_cubemx/Core/Src/tim.c $(START_DIR)/sads_balance_cubemx/Core/Src/usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_it.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_msp.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_timebase_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_i2c.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/system_stm32f4xx.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/syscalls.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/sysmem.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Startup/startup_stm32f446retx.s
+SRCS = $(START_DIR)/src/StepperDrive.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_i2c_v1_ll.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_utils.c $(START_DIR)/src/MTi_Driver.c $(START_DIR)/src/xbus.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_timer_ll.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_nvic.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetInf.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetNaN.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rt_nonfinite.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_data.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/overrideHALDelay.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/platform_timer.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c $(START_DIR)/sads_balance_cubemx/Core/Src/main.c $(START_DIR)/sads_balance_cubemx/Core/Src/gpio.c $(START_DIR)/sads_balance_cubemx/Core/Src/dma.c $(START_DIR)/sads_balance_cubemx/Core/Src/i2c.c $(START_DIR)/sads_balance_cubemx/Core/Src/tim.c $(START_DIR)/sads_balance_cubemx/Core/Src/usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_it.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_msp.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_timebase_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_i2c.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/system_stm32f4xx.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/syscalls.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/sysmem.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Startup/startup_stm32f446retx.s
 
 MAIN_SRC = $(START_DIR)/sads_balance_cubemodel_ert_rtw/ert_main.c
 
@@ -233,7 +234,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = mw_stm32_i2c_v1_ll.o mw_stm32_utils.o MTi_Driver.o xbus.o xcp_ext_mode.o sads_balance_cubemodel.o sads_balance_cubemodel_data.o xcp_ext_common.o xcp_ext_classic_trigger.o xcp.o xcp_standard.o xcp_daq.o xcp_calibration.o xcp_fifo.o xcp_transport.o xcp_mem_default.o xcp_drv_rtiostream.o xcp_utils.o xcp_frame_serial.o xcp_ext_param_default_serial.o overrideHALDelay.o platform_timer.o SysTickScheduler.o m3m4m4f_multitasking.o rtiostream_serial.o stm_usart.o sys_arch.o main.o gpio.o dma.o i2c.o tim.o usart.o stm32f4xx_it.o stm32f4xx_hal_msp.o stm32f4xx_hal_timebase_tim.o stm32f4xx_ll_gpio.o stm32f4xx_ll_dma.o stm32f4xx_ll_i2c.o stm32f4xx_ll_rcc.o stm32f4xx_ll_utils.o stm32f4xx_ll_exti.o stm32f4xx_hal_rcc.o stm32f4xx_hal_rcc_ex.o stm32f4xx_hal_flash.o stm32f4xx_hal_flash_ex.o stm32f4xx_hal_flash_ramfunc.o stm32f4xx_hal_gpio.o stm32f4xx_hal_dma_ex.o stm32f4xx_hal_dma.o stm32f4xx_hal_pwr.o stm32f4xx_hal_pwr_ex.o stm32f4xx_hal_cortex.o stm32f4xx_hal.o stm32f4xx_hal_exti.o stm32f4xx_hal_tim.o stm32f4xx_hal_tim_ex.o stm32f4xx_ll_tim.o stm32f4xx_ll_usart.o system_stm32f4xx.o syscalls.o sysmem.o startup_stm32f446retx.o
+OBJS = StepperDrive.o mw_stm32_i2c_v1_ll.o mw_stm32_utils.o MTi_Driver.o xbus.o stm_timer_ll.o mw_stm32_nvic.o rtGetInf.o rtGetNaN.o rt_nonfinite.o sads_balance_cubemodel.o sads_balance_cubemodel_data.o overrideHALDelay.o platform_timer.o SysTickScheduler.o m3m4m4f_multitasking.o main.o gpio.o dma.o i2c.o tim.o usart.o stm32f4xx_it.o stm32f4xx_hal_msp.o stm32f4xx_hal_timebase_tim.o stm32f4xx_ll_gpio.o stm32f4xx_ll_dma.o stm32f4xx_ll_i2c.o stm32f4xx_ll_rcc.o stm32f4xx_ll_utils.o stm32f4xx_ll_exti.o stm32f4xx_hal_rcc.o stm32f4xx_hal_rcc_ex.o stm32f4xx_hal_flash.o stm32f4xx_hal_flash_ex.o stm32f4xx_hal_flash_ramfunc.o stm32f4xx_hal_gpio.o stm32f4xx_hal_dma_ex.o stm32f4xx_hal_dma.o stm32f4xx_hal_pwr.o stm32f4xx_hal_pwr_ex.o stm32f4xx_hal_cortex.o stm32f4xx_hal.o stm32f4xx_hal_exti.o stm32f4xx_hal_tim.o stm32f4xx_hal_tim_ex.o stm32f4xx_ll_tim.o stm32f4xx_ll_usart.o system_stm32f4xx.o syscalls.o sysmem.o startup_stm32f446retx.o
 
 MAIN_OBJ = ert_main.o
 
@@ -270,24 +271,6 @@ CFLAGS_BASIC = $(DEFINES) $(INCLUDES) @$(COMPILER_COMMAND_FILE)
 
 CFLAGS += $(CFLAGS_SKIPFORSIL) $(CFLAGS_BASIC)
 
-#-----------
-# Linker
-#-----------
-
-LDFLAGS_ = --specs=nano.specs
-LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
-
-LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
-
-#--------------------------
-# Shared Library Linker
-#--------------------------
-
-SHAREDLIB_LDFLAGS_ = --specs=nano.specs
-SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
-
-SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
-
 #-----------------
 # C++ Compiler
 #-----------------
@@ -314,6 +297,40 @@ CPP_SHAREDLIB_LDFLAGS_ = --specs=nano.specs
 CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
+
+#-----------
+# Linker
+#-----------
+
+LDFLAGS_ = --specs=nano.specs
+LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
+
+LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
+
+#---------------------
+# MEX C++ Compiler
+#---------------------
+
+MEX_CPP_Compiler_BASIC =  @$(COMPILER_COMMAND_FILE)
+
+MEX_CPPFLAGS += $(MEX_CPP_Compiler_BASIC)
+
+#-----------------
+# MEX Compiler
+#-----------------
+
+MEX_Compiler_BASIC =  @$(COMPILER_COMMAND_FILE)
+
+MEX_CFLAGS += $(MEX_Compiler_BASIC)
+
+#--------------------------
+# Shared Library Linker
+#--------------------------
+
+SHAREDLIB_LDFLAGS_ = --specs=nano.specs
+SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
+
+SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
 ###########################################################################
 ## INLINED COMMANDS
@@ -390,7 +407,7 @@ execute : download
 
 $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	@echo "### Creating standalone executable "$(PRODUCT)" ..."
-	$(LD) $(LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(LIBS) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
+	$(CPP_LD) $(CPP_LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(LIBS) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
 	@echo "### Created: $(PRODUCT)"
 
 
@@ -598,143 +615,7 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.s
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.S
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cc
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.C
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cxx
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.s
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.S
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cc
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.C
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cxx
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.s
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.S
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cc
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.C
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cxx
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.s
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.S
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cc
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.C
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cxx
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.s
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.S
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cc
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.C
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cxx
+StepperDrive.o : $(START_DIR)/src/StepperDrive.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
@@ -754,11 +635,27 @@ xbus.o : $(START_DIR)/src/xbus.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-xcp_ext_mode.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c
+stm_timer_ll.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_timer_ll.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+mw_stm32_nvic.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_nvic.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
 ert_main.o : $(START_DIR)/sads_balance_cubemodel_ert_rtw/ert_main.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+rtGetInf.o : $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetInf.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+rtGetNaN.o : $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetNaN.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+rt_nonfinite.o : $(START_DIR)/sads_balance_cubemodel_ert_rtw/rt_nonfinite.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -767,58 +664,6 @@ sads_balance_cubemodel.o : $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_bala
 
 
 sads_balance_cubemodel_data.o : $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_data.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_ext_common.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_ext_classic_trigger.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_standard.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_daq.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_calibration.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_fifo.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_transport.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_mem_default.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_drv_rtiostream.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_utils.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_frame_serial.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-xcp_ext_param_default_serial.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -835,18 +680,6 @@ SysTickScheduler.o : $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/schedul
 
 
 m3m4m4f_multitasking.o : $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-rtiostream_serial.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/rtiostream_serial.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-stm_usart.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_usart.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-sys_arch.o : $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/src/sys_arch.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
