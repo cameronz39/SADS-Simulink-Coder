@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.84
+ * Model version                  : 7.120
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Tue Mar 18 18:41:56 2025
+ * C/C++ source code generated on : Tue May  6 13:39:33 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,60 +21,145 @@
 
 /* Block parameters (default storage) */
 P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
-  /* Computed Parameter: RT_InitialCondition
-   * Referenced by: '<Root>/RT'
+  /* Expression: 90
+   * Referenced by: '<S4>/Sine Wave'
    */
-  0,
+  90.0,
 
-  /* Computed Parameter: RT3_InitialCondition
-   * Referenced by: '<Root>/RT3'
+  /* Expression: 0
+   * Referenced by: '<S4>/Sine Wave'
+   */
+  0.0,
+
+  /* Expression: 50
+   * Referenced by: '<S4>/Sine Wave'
+   */
+  50.0,
+
+  /* Expression: 0.1
+   * Referenced by: '<S4>/Sine Wave'
+   */
+  0.1,
+
+  /* Expression: 0
+   * Referenced by:
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S4>/Constant2'
+   */
+  0.0,
+
+  /* Expression: pi/180
+   * Referenced by: '<S11>/Gain1'
+   */
+  0.017453292519943295,
+
+  /* Expression: 0.5
+   * Referenced by: '<S12>/1//2'
+   */
+  0.5,
+
+  /* Expression: 0
+   * Referenced by: '<S4>/Sine Wave1'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S4>/Sine Wave1'
+   */
+  0.0,
+
+  /* Expression: 50
+   * Referenced by: '<S4>/Sine Wave1'
+   */
+  50.0,
+
+  /* Expression: 0
+   * Referenced by: '<S4>/Sine Wave1'
+   */
+  0.0,
+
+  /* Computed Parameter: MID_Value
+   * Referenced by: '<Root>/MID'
+   */
+  1,
+
+  /* Computed Parameter: DATA_Value
+   * Referenced by: '<Root>/DATA'
    */
   0,
 
   /* Computed Parameter: g_body_Y0
-   * Referenced by: '<S8>/g_body'
+   * Referenced by: '<S5>/g_body'
    */
   0.0F,
 
   /* Computed Parameter: quat_Y0
-   * Referenced by: '<S8>/quat'
+   * Referenced by: '<S5>/quat'
    */
   0.0F,
 
   /* Computed Parameter: bodyRates_Y0
-   * Referenced by: '<S8>/bodyRates'
+   * Referenced by: '<S5>/bodyRates'
    */
   0.0F,
 
   /* Computed Parameter: Constant_Value
-   * Referenced by: '<S3>/Constant'
+   * Referenced by: '<S2>/Constant'
    */
   0.0F,
+
+  /* Computed Parameter: m_mmu_Gain
+   * Referenced by: '<S2>/m_mmu'
+   */
+  2.85F,
+
+  /* Computed Parameter: distancetorevs_Gain
+   * Referenced by: '<Root>/distance to # revs'
+   */
+  100.0F,
+
+  /* Computed Parameter: revstosteps_Gain
+   * Referenced by: '<Root>/#revs to steps'
+   */
+  6400.0F,
+
+  /* Computed Parameter: Gain3_Gain
+   * Referenced by: '<Root>/Gain3'
+   */
+  100.0F,
+
+  /* Computed Parameter: Gain1_Gain_n
+   * Referenced by: '<Root>/Gain1'
+   */
+  6400.0F,
 
   /* Computed Parameter: q_d_Value
    * Referenced by: '<Root>/q_d'
    */
   { 1.0F, 0.0F, 0.0F, 0.0F },
 
-  /* Computed Parameter: Proportional_Gain
-   * Referenced by: '<Root>/Proportional'
+  /* Computed Parameter: Gain_Gain
+   * Referenced by: '<Root>/Gain'
    */
-  -0.4F,
+  -0.5F,
 
-  /* Computed Parameter: m_mmu_Gain
-   * Referenced by: '<S3>/m_mmu'
+  /* Computed Parameter: DiscreteTimeIntegrator_gainval
+   * Referenced by: '<Root>/Discrete-Time Integrator'
    */
-  2.85F,
+  0.00625F,
 
-  /* Computed Parameter: Gain1_Gain
-   * Referenced by: '<Root>/Gain1'
+  /* Computed Parameter: DiscreteTimeIntegrator_IC
+   * Referenced by: '<Root>/Discrete-Time Integrator'
    */
-  80000.0F,
+  { 0.0F, 0.0F, 0.0F },
 
-  /* Computed Parameter: distancetosteps_Gain
-   * Referenced by: '<Root>/distance to steps'
+  /* Computed Parameter: Integral_Gain
+   * Referenced by: '<Root>/Integral'
    */
-  80000.0F
+  -0.5F
 };
 
 /*
