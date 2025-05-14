@@ -45,16 +45,17 @@ classdef MTi_Driver_Sys_Obj < matlab.System & coder.ExternalDependency
             end
         end
         
-        function [g_body, quat, bodyRates, debug] = stepImpl(obj,bytesIn)  %#ok<INUSD>
+        function [g_body, quat, bodyRates, eulerAngles, debug] = stepImpl(obj,bytesIn)  %#ok<INUSD>
             g_body = zeros(3,1,'single');
             quat = zeros(4,1,'single');
             bodyRates = zeros(3,1,'single');
+            eulerAngles = zeros(3,1,'single');
             debug = uint16(0);
             if isempty(coder.target)
                 % Place simulation output code here 
             else
                 % Call C-function implementing device output
-               coder.ceval('MTi_Driver_Step',bytesIn,coder.ref(g_body),coder.ref(quat),coder.ref(bodyRates), coder.ref(debug));
+               coder.ceval('MTi_Driver_Step',bytesIn,coder.ref(g_body),coder.ref(quat),coder.ref(bodyRates), coder.ref(eulerAngles), coder.ref(debug));
             end
         end
         
@@ -75,7 +76,7 @@ classdef MTi_Driver_Sys_Obj < matlab.System & coder.ExternalDependency
         end
         
         function num = getNumOutputsImpl(~)
-            num = 4;
+            num = 5;
         end
         
         function flag = isInputSizeMutableImpl(~,~)

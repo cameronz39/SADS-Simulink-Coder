@@ -5,7 +5,7 @@ float roll, pitch, yaw;
 void MTi_Driver_Init(void) {
 
 }
-void MTi_Driver_Step(uint8_t *bytesIn, float g_body[3], float quat[4], float bodyRates[3], uint16_t *debug) {
+void MTi_Driver_Step(uint8_t *bytesIn, float g_body[3], float quat[4], float bodyRates[3], float eulerAngles[3], uint16_t *debug) {
     uint16_t dataId;
     uint8_t  dataSize;
     // NOTE: for a full Xbus message, the payload begins at 4, for reduced Xbus, 
@@ -51,6 +51,15 @@ void MTi_Driver_Step(uint8_t *bytesIn, float g_body[3], float quat[4], float bod
         bodyRates[1] = extractFloat(bytesIn, &index); 
         bodyRates[2]  = extractFloat(bytesIn, &index); 
     }
+
+    dataId   = extractUint16(bytesIn, &index);
+	dataSize = extractUint8(bytesIn, &index);
+	if (dataId == 0x2030) {
+        // Extract Euler Angles
+	    eulerAngles[0] = extractFloat(bytesIn, &index);
+	    eulerAngles[1] = extractFloat(bytesIn, &index);
+	    eulerAngles[2] = extractFloat(bytesIn, &index);
+	}
 }
  
 void MTi_Driver_Terminate(void) {

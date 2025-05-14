@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.120
+ * Model version                  : 7.151
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Tue May  6 13:39:33 2025
+ * C/C++ source code generated on : Tue May 13 13:47:34 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,98 +21,135 @@
 
 /* Block parameters (default storage) */
 P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
-  /* Expression: 90
-   * Referenced by: '<S4>/Sine Wave'
-   */
-  90.0,
-
-  /* Expression: 0
-   * Referenced by: '<S4>/Sine Wave'
-   */
-  0.0,
-
-  /* Expression: 50
-   * Referenced by: '<S4>/Sine Wave'
-   */
-  50.0,
-
-  /* Expression: 0.1
-   * Referenced by: '<S4>/Sine Wave'
-   */
-  0.1,
-
-  /* Expression: 0
+  /* Variable: STEPS_PER_REV
    * Referenced by:
+   *   '<Root>/#revs to steps'
+   *   '<Root>/Gain1'
    */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<S4>/Constant2'
-   */
-  0.0,
-
-  /* Expression: pi/180
-   * Referenced by: '<S11>/Gain1'
-   */
-  0.017453292519943295,
-
-  /* Expression: 0.5
-   * Referenced by: '<S12>/1//2'
-   */
-  0.5,
-
-  /* Expression: 0
-   * Referenced by: '<S4>/Sine Wave1'
-   */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<S4>/Sine Wave1'
-   */
-  0.0,
-
-  /* Expression: 50
-   * Referenced by: '<S4>/Sine Wave1'
-   */
-  50.0,
-
-  /* Expression: 0
-   * Referenced by: '<S4>/Sine Wave1'
-   */
-  0.0,
-
-  /* Computed Parameter: MID_Value
-   * Referenced by: '<Root>/MID'
-   */
-  1,
+  3200.0F,
 
   /* Computed Parameter: DATA_Value
+   * Referenced by: '<S2>/DATA'
+   */
+  0,
+
+  /* Computed Parameter: StartX_Value
+   * Referenced by: '<S2>/Start X'
+   */
+  1600,
+
+  /* Computed Parameter: StartY_Value
+   * Referenced by: '<S2>/Start Y'
+   */
+  3200,
+
+  /* Computed Parameter: MID_Value
+   * Referenced by: '<S2>/MID'
+   */
+  8,
+
+  /* Computed Parameter: DATA_Value_b
    * Referenced by: '<Root>/DATA'
    */
   0,
 
+  /* Computed Parameter: Saturation_UpperSat
+   * Referenced by: '<Root>/Saturation'
+   */
+  2400,
+
+  /* Computed Parameter: Saturation_LowerSat
+   * Referenced by: '<Root>/Saturation'
+   */
+  -42400,
+
+  /* Computed Parameter: Saturation1_UpperSat
+   * Referenced by: '<Root>/Saturation1'
+   */
+  21600,
+
+  /* Computed Parameter: Saturation1_LowerSat
+   * Referenced by: '<Root>/Saturation1'
+   */
+  -23200,
+
+  /* Computed Parameter: MID_Value_d
+   * Referenced by: '<Root>/MID'
+   */
+  1,
+
   /* Computed Parameter: g_body_Y0
-   * Referenced by: '<S5>/g_body'
+   * Referenced by: '<S6>/g_body'
    */
   0.0F,
 
   /* Computed Parameter: quat_Y0
-   * Referenced by: '<S5>/quat'
+   * Referenced by: '<S6>/quat'
    */
   0.0F,
 
   /* Computed Parameter: bodyRates_Y0
-   * Referenced by: '<S5>/bodyRates'
+   * Referenced by: '<S6>/bodyRates'
+   */
+  0.0F,
+
+  /* Computed Parameter: eulerAngles_Y0
+   * Referenced by: '<S6>/eulerAngles'
    */
   0.0F,
 
   /* Computed Parameter: Constant_Value
-   * Referenced by: '<S2>/Constant'
+   * Referenced by: '<S3>/Constant'
    */
   0.0F,
 
+  /* Computed Parameter: q_d_Value
+   * Referenced by: '<Root>/q_d'
+   */
+  { 1.0F, 0.0F, 0.0F, 0.0F },
+
+  /* Computed Parameter: RollMountingError_Value
+   * Referenced by: '<S1>/Roll Mounting Error'
+   */
+  -1.35F,
+
+  /* Computed Parameter: PitchMountingError_Value
+   * Referenced by: '<S1>/Pitch Mounting Error'
+   */
+  -1.11F,
+
+  /* Computed Parameter: Constant_Value_o
+   * Referenced by: '<S1>/Constant'
+   */
+  0.0F,
+
+  /* Computed Parameter: Gain1_Gain
+   * Referenced by: '<S5>/Gain1'
+   */
+  0.0174532924F,
+
+  /* Computed Parameter: u2_Gain
+   * Referenced by: '<S7>/1//2'
+   */
+  0.5F,
+
+  /* Computed Parameter: Gain_Gain
+   * Referenced by: '<Root>/Gain'
+   */
+  -0.5F,
+
+  /* Computed Parameter: Gain2_Gain
+   * Referenced by: '<Root>/Gain2'
+   */
+  5.0F,
+
+  /* Computed Parameter: Derivative_Gain
+   * Referenced by: '<Root>/Derivative'
+   */
+  -0.5F,
+
   /* Computed Parameter: m_mmu_Gain
-   * Referenced by: '<S2>/m_mmu'
+   * Referenced by: '<S3>/m_mmu'
    */
   2.85F,
 
@@ -121,45 +158,10 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
    */
   100.0F,
 
-  /* Computed Parameter: revstosteps_Gain
-   * Referenced by: '<Root>/#revs to steps'
-   */
-  6400.0F,
-
   /* Computed Parameter: Gain3_Gain
    * Referenced by: '<Root>/Gain3'
    */
-  100.0F,
-
-  /* Computed Parameter: Gain1_Gain_n
-   * Referenced by: '<Root>/Gain1'
-   */
-  6400.0F,
-
-  /* Computed Parameter: q_d_Value
-   * Referenced by: '<Root>/q_d'
-   */
-  { 1.0F, 0.0F, 0.0F, 0.0F },
-
-  /* Computed Parameter: Gain_Gain
-   * Referenced by: '<Root>/Gain'
-   */
-  -0.5F,
-
-  /* Computed Parameter: DiscreteTimeIntegrator_gainval
-   * Referenced by: '<Root>/Discrete-Time Integrator'
-   */
-  0.00625F,
-
-  /* Computed Parameter: DiscreteTimeIntegrator_IC
-   * Referenced by: '<Root>/Discrete-Time Integrator'
-   */
-  { 0.0F, 0.0F, 0.0F },
-
-  /* Computed Parameter: Integral_Gain
-   * Referenced by: '<Root>/Integral'
-   */
-  -0.5F
+  100.0F
 };
 
 /*
