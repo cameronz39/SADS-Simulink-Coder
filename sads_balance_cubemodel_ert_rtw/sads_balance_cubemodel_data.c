@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.151
+ * Model version                  : 7.165
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Tue May 13 13:47:34 2025
+ * C/C++ source code generated on : Tue May 27 14:28:53 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -56,22 +56,22 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
   /* Computed Parameter: Saturation_UpperSat
    * Referenced by: '<Root>/Saturation'
    */
-  2400,
+  22400,
 
   /* Computed Parameter: Saturation_LowerSat
    * Referenced by: '<Root>/Saturation'
    */
-  -42400,
+  -22400,
 
   /* Computed Parameter: Saturation1_UpperSat
    * Referenced by: '<Root>/Saturation1'
    */
-  21600,
+  17600,
 
   /* Computed Parameter: Saturation1_LowerSat
    * Referenced by: '<Root>/Saturation1'
    */
-  -23200,
+  -27200,
 
   /* Computed Parameter: MID_Value_d
    * Referenced by: '<Root>/MID'
@@ -98,16 +98,6 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
    */
   0.0F,
 
-  /* Computed Parameter: Constant_Value
-   * Referenced by: '<S3>/Constant'
-   */
-  0.0F,
-
-  /* Computed Parameter: q_d_Value
-   * Referenced by: '<Root>/q_d'
-   */
-  { 1.0F, 0.0F, 0.0F, 0.0F },
-
   /* Computed Parameter: RollMountingError_Value
    * Referenced by: '<S1>/Roll Mounting Error'
    */
@@ -117,6 +107,21 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
    * Referenced by: '<S1>/Pitch Mounting Error'
    */
   -1.11F,
+
+  /* Computed Parameter: m_mmu_Gain
+   * Referenced by: '<S3>/m_mmu'
+   */
+  2.85F,
+
+  /* Computed Parameter: Constant_Value
+   * Referenced by: '<S3>/Constant'
+   */
+  0.0F,
+
+  /* Computed Parameter: q_d_Value
+   * Referenced by: '<Root>/q_d'
+   */
+  { 1.0F, 0.0F, 0.0F, 0.0F },
 
   /* Computed Parameter: Constant_Value_o
    * Referenced by: '<S1>/Constant'
@@ -143,23 +148,33 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
    */
   5.0F,
 
+  /* Computed Parameter: DiscreteTimeIntegrator_gainval
+   * Referenced by: '<Root>/Discrete-Time Integrator'
+   */
+  0.05F,
+
+  /* Computed Parameter: DiscreteTimeIntegrator_IC
+   * Referenced by: '<Root>/Discrete-Time Integrator'
+   */
+  { 0.0F, 0.0F, 0.0F },
+
+  /* Computed Parameter: Integral_Gain
+   * Referenced by: '<Root>/Integral'
+   */
+  -0.5F,
+
   /* Computed Parameter: Derivative_Gain
    * Referenced by: '<Root>/Derivative'
    */
   -0.5F,
 
-  /* Computed Parameter: m_mmu_Gain
-   * Referenced by: '<S3>/m_mmu'
-   */
-  2.85F,
-
-  /* Computed Parameter: distancetorevs_Gain
-   * Referenced by: '<Root>/distance to # revs'
+  /* Computed Parameter: Gain3_Gain
+   * Referenced by: '<Root>/Gain3'
    */
   100.0F,
 
-  /* Computed Parameter: Gain3_Gain
-   * Referenced by: '<Root>/Gain3'
+  /* Computed Parameter: distancetorevs_Gain
+   * Referenced by: '<Root>/distance to # revs'
    */
   100.0F
 };

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.151
+ * Model version                  : 7.165
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Tue May 13 13:47:34 2025
+ * C/C++ source code generated on : Tue May 27 14:28:53 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -86,6 +86,46 @@ struct tag_ayIc4J5yzVhZTlnbhUyj1C
 typedef struct tag_ayIc4J5yzVhZTlnbhUyj1C MTi_Driver_Sys_Obj_sads_balan_T;
 
 #endif                             /* typedef_MTi_Driver_Sys_Obj_sads_balan_T */
+
+#ifndef struct_tag_mSJ6PHZumI4XsQXTyKUpk
+#define struct_tag_mSJ6PHZumI4XsQXTyKUpk
+
+struct tag_mSJ6PHZumI4XsQXTyKUpk
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+};
+
+#endif                                 /* struct_tag_mSJ6PHZumI4XsQXTyKUpk */
+
+#ifndef typedef_Comm_Driver_Sys_Obj_sads_bala_T
+#define typedef_Comm_Driver_Sys_Obj_sads_bala_T
+
+typedef struct tag_mSJ6PHZumI4XsQXTyKUpk Comm_Driver_Sys_Obj_sads_bala_T;
+
+#endif                             /* typedef_Comm_Driver_Sys_Obj_sads_bala_T */
+
+#ifndef struct_tag_Iq1q13TLZGLVDFrOgJGfXH
+#define struct_tag_Iq1q13TLZGLVDFrOgJGfXH
+
+struct tag_Iq1q13TLZGLVDFrOgJGfXH
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  UART_Type_T* UARTHandle;
+  uint8_T UARTInternalBuffer[128];
+};
+
+#endif                                 /* struct_tag_Iq1q13TLZGLVDFrOgJGfXH */
+
+#ifndef typedef_stm32cube_blocks_UARTWrite_sa_T
+#define typedef_stm32cube_blocks_UARTWrite_sa_T
+
+typedef struct tag_Iq1q13TLZGLVDFrOgJGfXH stm32cube_blocks_UARTWrite_sa_T;
+
+#endif                             /* typedef_stm32cube_blocks_UARTWrite_sa_T */
 
 /* Parameters (default storage) */
 typedef struct P_sads_balance_cubemodel_T_ P_sads_balance_cubemodel_T;

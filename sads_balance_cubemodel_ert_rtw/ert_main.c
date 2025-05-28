@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.151
+ * Model version                  : 7.165
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Tue May 13 13:47:34 2025
+ * C/C++ source code generated on : Tue May 27 14:28:53 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -69,6 +69,7 @@ int main(int argc, char **argv)
   MX_TIM2_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
+  MX_USART3_UART_Init();
   rtmSetErrorStatus(sads_balance_cubemodel_M, 0);
   sads_balance_cubemodel_initialize();
   __disable_irq();

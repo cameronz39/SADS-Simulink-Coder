@@ -2,7 +2,7 @@
 ## Makefile generated for component 'sads_balance_cubemodel'. 
 ## 
 ## Makefile     : sads_balance_cubemodel.mk
-## Generated on : Tue May 13 13:47:37 2025
+## Generated on : Tue May 27 14:28:12 2025
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/sads_balance_cubemodel.elf
 ## Product type : executable
 ## 
@@ -217,14 +217,15 @@ DEFINES_CUSTOM =
 DEFINES_OPTS = -DTID01EQ=0
 DEFINES_SKIPFORSIL = -DXCP_CUSTOM_PLATFORM -DXCP_MEM_DAQ_RESERVED_POOL_BLOCKS_NUMBER=10 -D__FPU_PRESENT=1U -D__FPU_USED=1U -DSTACK_SIZE=512 -DRT
 DEFINES_STANDARD = -DMODEL=sads_balance_cubemodel -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
+DEFINES_STM32DEVICEDRIVERBLOCKS = -DMW_USART3_ENABLED=1 -DMW_USART3_TXE_INTERRUPT_ENABLED=1
 
-DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
+DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD) $(DEFINES_STM32DEVICEDRIVERBLOCKS)
 
 ###########################################################################
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_i2c_v1_ll.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_utils.c $(START_DIR)/src/MTi_Driver.c $(START_DIR)/src/xbus.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetInf.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetNaN.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rt_nonfinite.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_data.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/overrideHALDelay.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/platform_timer.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c $(START_DIR)/sads_balance_cubemx/Core/Src/main.c $(START_DIR)/sads_balance_cubemx/Core/Src/gpio.c $(START_DIR)/sads_balance_cubemx/Core/Src/dma.c $(START_DIR)/sads_balance_cubemx/Core/Src/i2c.c $(START_DIR)/sads_balance_cubemx/Core/Src/tim.c $(START_DIR)/sads_balance_cubemx/Core/Src/usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_it.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_msp.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_timebase_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_i2c.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/system_stm32f4xx.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/syscalls.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/sysmem.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Startup/startup_stm32f446retx.s
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_i2c_v1_ll.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/mw_stm32_utils.c $(START_DIR)/src/MTi_Driver.c $(START_DIR)/src/xbus.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_usart.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_lpuart.c $(START_DIR)/src/Comm_Driver.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetInf.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rtGetNaN.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/rt_nonfinite.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel.c $(START_DIR)/sads_balance_cubemodel_ert_rtw/sads_balance_cubemodel_data.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/overrideHALDelay.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/platform_timer.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/SysTickScheduler.c $(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/src/m3m4m4f_multitasking.c $(START_DIR)/sads_balance_cubemx/Core/Src/main.c $(START_DIR)/sads_balance_cubemx/Core/Src/gpio.c $(START_DIR)/sads_balance_cubemx/Core/Src/dma.c $(START_DIR)/sads_balance_cubemx/Core/Src/i2c.c $(START_DIR)/sads_balance_cubemx/Core/Src/tim.c $(START_DIR)/sads_balance_cubemx/Core/Src/usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_it.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_msp.c $(START_DIR)/sads_balance_cubemx/Core/Src/stm32f4xx_hal_timebase_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_i2c.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_tim.c $(START_DIR)/sads_balance_cubemx/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usart.c $(START_DIR)/sads_balance_cubemx/Core/Src/system_stm32f4xx.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/syscalls.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Core/sysmem.c $(START_DIR)/sads_balance_cubemx/STM32CubeIDE/Application/User/Startup/startup_stm32f446retx.s
 
 MAIN_SRC = $(START_DIR)/sads_balance_cubemodel_ert_rtw/ert_main.c
 
@@ -234,7 +235,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = mw_stm32_i2c_v1_ll.o mw_stm32_utils.o MTi_Driver.o xbus.o rtGetInf.o rtGetNaN.o rt_nonfinite.o sads_balance_cubemodel.o sads_balance_cubemodel_data.o overrideHALDelay.o platform_timer.o SysTickScheduler.o m3m4m4f_multitasking.o main.o gpio.o dma.o i2c.o tim.o usart.o stm32f4xx_it.o stm32f4xx_hal_msp.o stm32f4xx_hal_timebase_tim.o stm32f4xx_ll_gpio.o stm32f4xx_ll_dma.o stm32f4xx_ll_i2c.o stm32f4xx_ll_rcc.o stm32f4xx_ll_utils.o stm32f4xx_ll_exti.o stm32f4xx_hal_rcc.o stm32f4xx_hal_rcc_ex.o stm32f4xx_hal_flash.o stm32f4xx_hal_flash_ex.o stm32f4xx_hal_flash_ramfunc.o stm32f4xx_hal_gpio.o stm32f4xx_hal_dma_ex.o stm32f4xx_hal_dma.o stm32f4xx_hal_pwr.o stm32f4xx_hal_pwr_ex.o stm32f4xx_hal_cortex.o stm32f4xx_hal.o stm32f4xx_hal_exti.o stm32f4xx_hal_tim.o stm32f4xx_hal_tim_ex.o stm32f4xx_ll_tim.o stm32f4xx_ll_usart.o system_stm32f4xx.o syscalls.o sysmem.o startup_stm32f446retx.o
+OBJS = mw_stm32_i2c_v1_ll.o mw_stm32_utils.o MTi_Driver.o xbus.o stm_usart.o stm_lpuart.o Comm_Driver.o rtGetInf.o rtGetNaN.o rt_nonfinite.o sads_balance_cubemodel.o sads_balance_cubemodel_data.o overrideHALDelay.o platform_timer.o SysTickScheduler.o m3m4m4f_multitasking.o main.o gpio.o dma.o i2c.o tim.o usart.o stm32f4xx_it.o stm32f4xx_hal_msp.o stm32f4xx_hal_timebase_tim.o stm32f4xx_ll_gpio.o stm32f4xx_ll_dma.o stm32f4xx_ll_i2c.o stm32f4xx_ll_rcc.o stm32f4xx_ll_utils.o stm32f4xx_ll_exti.o stm32f4xx_hal_rcc.o stm32f4xx_hal_rcc_ex.o stm32f4xx_hal_flash.o stm32f4xx_hal_flash_ex.o stm32f4xx_hal_flash_ramfunc.o stm32f4xx_hal_gpio.o stm32f4xx_hal_dma_ex.o stm32f4xx_hal_dma.o stm32f4xx_hal_pwr.o stm32f4xx_hal_pwr_ex.o stm32f4xx_hal_cortex.o stm32f4xx_hal.o stm32f4xx_hal_exti.o stm32f4xx_hal_tim.o stm32f4xx_hal_tim_ex.o stm32f4xx_ll_tim.o stm32f4xx_ll_usart.o system_stm32f4xx.o syscalls.o sysmem.o startup_stm32f446retx.o
 
 MAIN_OBJ = ert_main.o
 
@@ -284,7 +285,7 @@ CPPFLAGS += $(CPPFLAGS_SKIPFORSIL) $(CPPFLAGS_BASIC)
 # C++ Linker
 #---------------
 
-CPP_LDFLAGS_ = --specs=nano.specs
+CPP_LDFLAGS_ = -u _printf_float --specs=nano.specs
 CPP_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
 
 CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
@@ -293,7 +294,7 @@ CPP_LDFLAGS += $(CPP_LDFLAGS_) $(CPP_LDFLAGS_SKIPFORSIL)
 # C++ Shared Library Linker
 #------------------------------
 
-CPP_SHAREDLIB_LDFLAGS_ = --specs=nano.specs
+CPP_SHAREDLIB_LDFLAGS_ = -u _printf_float --specs=nano.specs
 CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
@@ -302,7 +303,7 @@ CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_) $(CPP_SHAREDLIB_LDFLAGS_SKIPF
 # Linker
 #-----------
 
-LDFLAGS_ = --specs=nano.specs
+LDFLAGS_ = -u _printf_float --specs=nano.specs
 LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
 
 LDFLAGS += $(LDFLAGS_) $(LDFLAGS_SKIPFORSIL)
@@ -327,7 +328,7 @@ MEX_CFLAGS += $(MEX_Compiler_BASIC)
 # Shared Library Linker
 #--------------------------
 
-SHAREDLIB_LDFLAGS_ = --specs=nano.specs
+SHAREDLIB_LDFLAGS_ = -u _printf_float --specs=nano.specs
 SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork -mfpu=fpv4-sp-d16 -mfloat-abi=hard --entry Reset_Handler --specs=nosys.specs  -T"C:\Users\camer\OneDrive\Desktop\SADS Balance\sads_balance_cubemx\STM32CubeIDE\STM32F446RETX_FLASH.ld"
 
 SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_) $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
@@ -628,6 +629,18 @@ MTi_Driver.o : $(START_DIR)/src/MTi_Driver.c
 
 
 xbus.o : $(START_DIR)/src/xbus.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+stm_usart.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_usart.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+stm_lpuart.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/shared/supportpackages/stm32/src/stm_lpuart.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+Comm_Driver.o : $(START_DIR)/src/Comm_Driver.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 

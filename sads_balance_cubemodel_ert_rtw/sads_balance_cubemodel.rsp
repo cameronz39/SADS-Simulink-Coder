@@ -2,6 +2,9 @@ mw_stm32_i2c_v1_ll.o
 mw_stm32_utils.o
 MTi_Driver.o
 xbus.o
+stm_usart.o
+stm_lpuart.o
+Comm_Driver.o
 ert_main.o
 rtGetInf.o
 rtGetNaN.o

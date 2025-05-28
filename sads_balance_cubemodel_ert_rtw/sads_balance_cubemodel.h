@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.151
+ * Model version                  : 7.165
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Tue May 13 13:47:34 2025
+ * C/C++ source code generated on : Tue May 27 14:28:53 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -24,6 +24,8 @@
 #include "rtwtypes.h"
 #include "mw_stm32_i2c_ll.h"
 #include "MTi_Driver.h"
+#include "stm_uart.h"
+#include "Comm_Driver.h"
 #endif                             /* sads_balance_cubemodel_COMMON_INCLUDES_ */
 
 #include "sads_balance_cubemodel_types.h"
@@ -49,11 +51,14 @@ typedef struct {
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  stm32cube_blocks_I2CControlle_T obj; /* '<S2>/I2C Controller Write1' */
-  stm32cube_blocks_I2CControlle_T obj_a;/* '<Root>/I2C Controller Write' */
+  stm32cube_blocks_UARTWrite_sa_T obj; /* '<Root>/UART//USART Write1' */
+  stm32cube_blocks_I2CControlle_T obj_a;/* '<S2>/I2C Controller Write1' */
+  stm32cube_blocks_I2CControlle_T obj_a3;/* '<Root>/I2C Controller Write' */
   stm32cube_blocks_I2CControl_f_T obj_g;/* '<S6>/I2C Controller Read2' */
   stm32cube_blocks_I2CControl_f_T obj_l;/* '<S1>/Check Pipe Status' */
   MTi_Driver_Sys_Obj_sads_balan_T obj_m;/* '<S6>/MTi Driver' */
+  Comm_Driver_Sys_Obj_sads_bala_T obj_o;/* '<Root>/Wiress Comms' */
+  real32_T DiscreteTimeIntegrator_DSTATE[3];/* '<Root>/Discrete-Time Integrator' */
 } DW_sads_balance_cubemodel_T;
 
 /* Parameters (default storage) */
@@ -105,12 +110,6 @@ struct P_sads_balance_cubemodel_T_ {
   real32_T eulerAngles_Y0;             /* Computed Parameter: eulerAngles_Y0
                                         * Referenced by: '<S6>/eulerAngles'
                                         */
-  real32_T Constant_Value;             /* Computed Parameter: Constant_Value
-                                        * Referenced by: '<S3>/Constant'
-                                        */
-  real32_T q_d_Value[4];               /* Computed Parameter: q_d_Value
-                                        * Referenced by: '<Root>/q_d'
-                                        */
   real32_T RollMountingError_Value;
                                   /* Computed Parameter: RollMountingError_Value
                                    * Referenced by: '<S1>/Roll Mounting Error'
@@ -119,6 +118,15 @@ struct P_sads_balance_cubemodel_T_ {
                                  /* Computed Parameter: PitchMountingError_Value
                                   * Referenced by: '<S1>/Pitch Mounting Error'
                                   */
+  real32_T m_mmu_Gain;                 /* Computed Parameter: m_mmu_Gain
+                                        * Referenced by: '<S3>/m_mmu'
+                                        */
+  real32_T Constant_Value;             /* Computed Parameter: Constant_Value
+                                        * Referenced by: '<S3>/Constant'
+                                        */
+  real32_T q_d_Value[4];               /* Computed Parameter: q_d_Value
+                                        * Referenced by: '<Root>/q_d'
+                                        */
   real32_T Constant_Value_o;           /* Computed Parameter: Constant_Value_o
                                         * Referenced by: '<S1>/Constant'
                                         */
@@ -134,18 +142,26 @@ struct P_sads_balance_cubemodel_T_ {
   real32_T Gain2_Gain;                 /* Computed Parameter: Gain2_Gain
                                         * Referenced by: '<Root>/Gain2'
                                         */
+  real32_T DiscreteTimeIntegrator_gainval;
+                           /* Computed Parameter: DiscreteTimeIntegrator_gainval
+                            * Referenced by: '<Root>/Discrete-Time Integrator'
+                            */
+  real32_T DiscreteTimeIntegrator_IC[3];
+                                /* Computed Parameter: DiscreteTimeIntegrator_IC
+                                 * Referenced by: '<Root>/Discrete-Time Integrator'
+                                 */
+  real32_T Integral_Gain;              /* Computed Parameter: Integral_Gain
+                                        * Referenced by: '<Root>/Integral'
+                                        */
   real32_T Derivative_Gain;            /* Computed Parameter: Derivative_Gain
                                         * Referenced by: '<Root>/Derivative'
                                         */
-  real32_T m_mmu_Gain;                 /* Computed Parameter: m_mmu_Gain
-                                        * Referenced by: '<S3>/m_mmu'
+  real32_T Gain3_Gain;                 /* Computed Parameter: Gain3_Gain
+                                        * Referenced by: '<Root>/Gain3'
                                         */
   real32_T distancetorevs_Gain;       /* Computed Parameter: distancetorevs_Gain
                                        * Referenced by: '<Root>/distance to # revs'
                                        */
-  real32_T Gain3_Gain;                 /* Computed Parameter: Gain3_Gain
-                                        * Referenced by: '<Root>/Gain3'
-                                        */
 };
 
 /* Real-time Model Data Structure */
@@ -175,8 +191,6 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<Root>/Discrete-Time Integrator' : Unused code path elimination
- * Block '<Root>/Integral' : Unused code path elimination
  * Block '<Root>/Cast To Single' : Eliminate redundant data type conversion
  * Block '<S1>/Cast To Single' : Eliminate redundant data type conversion
  * Block '<S9>/Product' : Unused code path elimination
