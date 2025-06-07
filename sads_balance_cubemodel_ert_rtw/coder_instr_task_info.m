@@ -12,7 +12,6 @@ function [taskInfo, numtask, isDeploymentDiagram]=coder_instr_task_info()
 
 
 
-
     numtask = 1;
     for i = 1:numtask
     if ( 0 == isnumeric(taskInfo(i).samplePeriod) )

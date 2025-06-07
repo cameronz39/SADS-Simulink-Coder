@@ -3,11 +3,11 @@ s    = serialport(port, baud);
 flush(s);
 
 SYNC  = uint8(0xAA);
-FRAME = 33;
+FRAME = 39;
 
 sampleRate = 10;
 
-% tiny hidden figure just to get KeyPressFcn callbacks
+% tiny hidden figure just to get KeyPsressFcn callbacks
 hFig = figure( ...
     'MenuBar','none','ToolBar','none','NumberTitle','off', ...
     'Visible','on', ...
@@ -35,9 +35,10 @@ while true
 
     roll = typecast(raw(2:5),'single');
     pitch = typecast(raw(6:9),'single');
+    trq = typecast(raw(38:39),'int16');
 
     % ------------- print raw bytes in HEX ---------------------
-    fprintf('Cnt: %d, Roll: %.2f, Pitch: %.2f, RAW: %s\n', frameCount, roll, pitch, sprintf('%02X ', raw));
+    fprintf('Cnt: %d, Trq: %d, Roll: %.2f, Pitch: %.2f, RAW: %s\n', frameCount, trq, roll, pitch, sprintf('%02X ', raw));
 
     % ----------- check keyboard ------------------------------------
     drawnow;
@@ -62,7 +63,7 @@ delete(hFig)
 %% Plot data and visually inspect for a good starting point
 clc
 clear
-raw_data_dir = 'serial_27-May-2025';
+raw_data_dir = 'passive_runs/June07_passive_8.mat';
 load(raw_data_dir)
 % load('serial_23-May-2025.mat')
 
@@ -74,9 +75,12 @@ t = linspace(0,(numFrames-1)*sampleTime,numFrames);
 eulerAngles = zeros(numFrames,3);
 bodyRates = zeros(numFrames,3);
 stepperPos = zeros(numFrames,2);
+wheel_vel = zeros(numFrames,1);
+wheel_trq = zeros(numFrames,1);
+
 
 % unpacking data...
-for i = 1:numFrames
+for i = 1:numFrames % <---  REMEMBER TO INCLUDE/NOT INCLUDE RW WHEEL DATA HERE!!
     currentFrame = capturedFrames(:,i)';
     
     roll = typecast(currentFrame(2:5),'single');
@@ -90,6 +94,9 @@ for i = 1:numFrames
     pos_x = typecast(currentFrame(26:29),'int32');
     pos_y = typecast(currentFrame(30:33),'int32');
 
+    wheel_vel(i) = typecast(currentFrame(34:37),'int32');
+    wheel_trq(i) = typecast(currentFrame(38:39),'int16');
+
     eulerAngles(i,:) = [roll pitch yaw];
     bodyRates(i,:) = [omega_x omega_y omega_z];
     stepperPos(i,:) = [pos_x pos_y];
@@ -97,33 +104,41 @@ end
 
 figure
 
-subplot(3,1,1)
+subplot(4,1,1)
 plot(t,eulerAngles(:,1:2),'LineWidth',1.5)
 grid on
 xlabel("Time [s]")
 ylabel("Euler Angles [deg]")
 legend("Roll","Pitch")
 
-subplot(3,1,2)
-plot(t,bodyRates(:,1:2),'LineWidth',1.5)
+subplot(4,1,2)
+plot(t,bodyRates(:,1:3),'LineWidth',1.5)
 grid on
 xlabel("Time [s]")
 ylabel("Body Rates [deg/s]")
-legend("\omega_x","\omega_y")
+legend("\omega_z")
 
-subplot(3,1,3)
+subplot(4,1,3)
 plot(t,stepperPos,'LineWidth',1.5)
 grid on
 xlabel("Time [s]")
 ylabel("Stepper Positions")
 legend("Stepper X","Stepper Y")
 
-%% 
+subplot(4,1,4)
+plot(t,wheel_vel,'LineWidth',1.5)
+grid on
+xlabel("Time [s]")
+ylabel("Reaction Wheel speed")
+
+
+%% export data in simulink-compatible format (saves in export_for_simulink)
+
 clc
 
 % MAKE SURE TO SET THE CORRECT FILE IN SIMULINK AS WELL
-name = 'May_27_UKF_4';
-t_start = 0;
+name = 'placeholder';
+t_start = 0; % <------ set a proper cutoff point
 start_index = find(t > t_start,1,'first');
 
 t_new = t(start_index:end) - t(start_index);
@@ -150,8 +165,10 @@ data_path = 'export_for_simulink/May_27_UKF_4.mat';
 load(data_path)
 data_path = fullfile(pwd,data_path);
 set_param('SADS_UKF/From File', 'FileName', data_path);  
+t_final = size(output,1)*10;
 
 % EKF Hyperparameters
+n = 8;
 alpha   = 1e-3;         % small, positive
 kappa   = 0;            % usually 0
 beta    = 2;            % optimal for Gaussian
@@ -177,7 +194,7 @@ process_PSD = (process_variance^2)*T_s;
 % for simulating IMU
 noise_power = 5.235988e-5; % [rad/s/sqrt(Hz)] provided on sensor datasheet
 sensor_PSD = noise_power^2; % IMU power spectral density
-sample_rate = 25; % IMU sample rate
+sample_rate = 10; % IMU sample rate
 sample_time = 1/sample_rate; % IMU sample period
 
 
@@ -221,17 +238,18 @@ grid on
 xlabel('Time [s]')
 title('r_z Covariance')
 
-vertical_mass = 1.121;
-num_sliders = 1;
+ball_screw_wt = 0.177;
+plate_wt = 0.236;
+
+vertical_mass = ball_screw_wt + 2*plate_wt;
 num_rot = r_to_rotations(0.0001,vertical_mass,num_sliders,m_s)';
 
 
-function num_rot = r_to_rotations(r_z,sliderWeight,num_sliders,total_mass)
-    total_slider_weight = sliderWeight*num_sliders;
+function num_rot = r_to_rotations(r_z,sliderWeight,total_mass)
     screw_pitch = 0.010;      % mm / rev   (== 0.010 mm per rev)
 
     % How far the slider itself must move
-    delta_z = (r_z * total_mass) / total_slider_weight;
+    delta_z = (r_z * total_mass) / sliderWeight;
 
     % Revolutions required
     num_rot = delta_z / screw_pitch;

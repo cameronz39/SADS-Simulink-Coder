@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'sads_balance_cubemodel'.
  *
- * Model version                  : 7.165
+ * Model version                  : 7.173
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Tue May 27 14:28:53 2025
+ * C/C++ source code generated on : Sat Jun  7 13:55:19 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -44,20 +44,19 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real32_T MTiDriver_o1[3];            /* '<S6>/MTi Driver' */
-  real32_T MTiDriver_o3[3];            /* '<S6>/MTi Driver' */
-  real32_T MTiDriver_o4[3];            /* '<S6>/MTi Driver' */
+  real32_T MTiDriver_o1[3];            /* '<S5>/MTi Driver' */
+  real32_T MTiDriver_o3[3];            /* '<S5>/MTi Driver' */
+  real32_T MTiDriver_o4[3];            /* '<S5>/MTi Driver' */
 } B_sads_balance_cubemodel_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   stm32cube_blocks_UARTWrite_sa_T obj; /* '<Root>/UART//USART Write1' */
-  stm32cube_blocks_I2CControlle_T obj_a;/* '<S2>/I2C Controller Write1' */
-  stm32cube_blocks_I2CControlle_T obj_a3;/* '<Root>/I2C Controller Write' */
-  stm32cube_blocks_I2CControl_f_T obj_g;/* '<S6>/I2C Controller Read2' */
-  stm32cube_blocks_I2CControl_f_T obj_l;/* '<S1>/Check Pipe Status' */
-  MTi_Driver_Sys_Obj_sads_balan_T obj_m;/* '<S6>/MTi Driver' */
-  Comm_Driver_Sys_Obj_sads_bala_T obj_o;/* '<Root>/Wiress Comms' */
+  stm32cube_blocks_I2CControlle_T obj_g;/* '<S5>/I2C Controller Read2' */
+  stm32cube_blocks_I2CControlle_T obj_l;/* '<S1>/Check Pipe Status' */
+  stm32cube_blocks_I2CControlle_T obj_o;/* '<Root>/Check Pipe Status' */
+  MTi_Driver_Sys_Obj_sads_balan_T obj_m;/* '<S5>/MTi Driver' */
+  Comm_Driver_Sys_Obj_sads_bala_T obj_o1;/* '<Root>/Wiress Comms' */
   real32_T DiscreteTimeIntegrator_DSTATE[3];/* '<Root>/Discrete-Time Integrator' */
 } DW_sads_balance_cubemodel_T;
 
@@ -68,47 +67,17 @@ struct P_sads_balance_cubemodel_T_ {
                                         *   '<Root>/#revs to steps'
                                         *   '<Root>/Gain1'
                                         */
-  int32_T DATA_Value;                  /* Computed Parameter: DATA_Value
-                                        * Referenced by: '<S2>/DATA'
-                                        */
-  int32_T StartX_Value;                /* Computed Parameter: StartX_Value
-                                        * Referenced by: '<S2>/Start X'
-                                        */
-  int32_T StartY_Value;                /* Computed Parameter: StartY_Value
-                                        * Referenced by: '<S2>/Start Y'
-                                        */
-  int32_T MID_Value;                   /* Computed Parameter: MID_Value
-                                        * Referenced by: '<S2>/MID'
-                                        */
-  int32_T DATA_Value_b;                /* Computed Parameter: DATA_Value_b
-                                        * Referenced by: '<Root>/DATA'
-                                        */
-  int32_T Saturation_UpperSat;        /* Computed Parameter: Saturation_UpperSat
-                                       * Referenced by: '<Root>/Saturation'
-                                       */
-  int32_T Saturation_LowerSat;        /* Computed Parameter: Saturation_LowerSat
-                                       * Referenced by: '<Root>/Saturation'
-                                       */
-  int32_T Saturation1_UpperSat;      /* Computed Parameter: Saturation1_UpperSat
-                                      * Referenced by: '<Root>/Saturation1'
-                                      */
-  int32_T Saturation1_LowerSat;      /* Computed Parameter: Saturation1_LowerSat
-                                      * Referenced by: '<Root>/Saturation1'
-                                      */
-  int32_T MID_Value_d;                 /* Computed Parameter: MID_Value_d
-                                        * Referenced by: '<Root>/MID'
-                                        */
   real32_T g_body_Y0;                  /* Computed Parameter: g_body_Y0
-                                        * Referenced by: '<S6>/g_body'
+                                        * Referenced by: '<S5>/g_body'
                                         */
   real32_T quat_Y0;                    /* Computed Parameter: quat_Y0
-                                        * Referenced by: '<S6>/quat'
+                                        * Referenced by: '<S5>/quat'
                                         */
   real32_T bodyRates_Y0;               /* Computed Parameter: bodyRates_Y0
-                                        * Referenced by: '<S6>/bodyRates'
+                                        * Referenced by: '<S5>/bodyRates'
                                         */
   real32_T eulerAngles_Y0;             /* Computed Parameter: eulerAngles_Y0
-                                        * Referenced by: '<S6>/eulerAngles'
+                                        * Referenced by: '<S5>/eulerAngles'
                                         */
   real32_T RollMountingError_Value;
                                   /* Computed Parameter: RollMountingError_Value
@@ -119,10 +88,10 @@ struct P_sads_balance_cubemodel_T_ {
                                   * Referenced by: '<S1>/Pitch Mounting Error'
                                   */
   real32_T m_mmu_Gain;                 /* Computed Parameter: m_mmu_Gain
-                                        * Referenced by: '<S3>/m_mmu'
+                                        * Referenced by: '<S2>/m_mmu'
                                         */
   real32_T Constant_Value;             /* Computed Parameter: Constant_Value
-                                        * Referenced by: '<S3>/Constant'
+                                        * Referenced by: '<S2>/Constant'
                                         */
   real32_T q_d_Value[4];               /* Computed Parameter: q_d_Value
                                         * Referenced by: '<Root>/q_d'
@@ -131,10 +100,10 @@ struct P_sads_balance_cubemodel_T_ {
                                         * Referenced by: '<S1>/Constant'
                                         */
   real32_T Gain1_Gain;                 /* Computed Parameter: Gain1_Gain
-                                        * Referenced by: '<S5>/Gain1'
+                                        * Referenced by: '<S4>/Gain1'
                                         */
   real32_T u2_Gain;                    /* Computed Parameter: u2_Gain
-                                        * Referenced by: '<S7>/1//2'
+                                        * Referenced by: '<S6>/1//2'
                                         */
   real32_T Gain_Gain;                  /* Computed Parameter: Gain_Gain
                                         * Referenced by: '<Root>/Gain'
@@ -191,13 +160,17 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<Root>/DATA' : Unused code path elimination
+ * Block '<Root>/MID' : Unused code path elimination
+ * Block '<Root>/Saturation' : Unused code path elimination
+ * Block '<Root>/Saturation1' : Unused code path elimination
  * Block '<Root>/Cast To Single' : Eliminate redundant data type conversion
  * Block '<S1>/Cast To Single' : Eliminate redundant data type conversion
- * Block '<S9>/Product' : Unused code path elimination
- * Block '<S9>/Product1' : Unused code path elimination
- * Block '<S9>/Product2' : Unused code path elimination
- * Block '<S9>/Product3' : Unused code path elimination
- * Block '<S9>/Sum' : Unused code path elimination
+ * Block '<S8>/Product' : Unused code path elimination
+ * Block '<S8>/Product1' : Unused code path elimination
+ * Block '<S8>/Product2' : Unused code path elimination
+ * Block '<S8>/Product3' : Unused code path elimination
+ * Block '<S8>/Sum' : Unused code path elimination
  */
 
 /*-
@@ -216,17 +189,16 @@ extern volatile boolean_T runModel;
  *
  * '<Root>' : 'sads_balance_cubemodel'
  * '<S1>'   : 'sads_balance_cubemodel/IMU I2C Read'
- * '<S2>'   : 'sads_balance_cubemodel/Initialize Function'
- * '<S3>'   : 'sads_balance_cubemodel/Map PID to r_mmus2'
- * '<S4>'   : 'sads_balance_cubemodel/Quaternion Multiplication'
- * '<S5>'   : 'sads_balance_cubemodel/IMU I2C Read/Degrees to Radians'
- * '<S6>'   : 'sads_balance_cubemodel/IMU I2C Read/Read Incoming Data if data available'
- * '<S7>'   : 'sads_balance_cubemodel/IMU I2C Read/Rotation Angles to Quaternions'
- * '<S8>'   : 'sads_balance_cubemodel/Map PID to r_mmus2/Cross Product'
- * '<S9>'   : 'sads_balance_cubemodel/Quaternion Multiplication/q0'
- * '<S10>'  : 'sads_balance_cubemodel/Quaternion Multiplication/q1'
- * '<S11>'  : 'sads_balance_cubemodel/Quaternion Multiplication/q2'
- * '<S12>'  : 'sads_balance_cubemodel/Quaternion Multiplication/q3'
+ * '<S2>'   : 'sads_balance_cubemodel/Map PID to r_mmus2'
+ * '<S3>'   : 'sads_balance_cubemodel/Quaternion Multiplication'
+ * '<S4>'   : 'sads_balance_cubemodel/IMU I2C Read/Degrees to Radians'
+ * '<S5>'   : 'sads_balance_cubemodel/IMU I2C Read/Read Incoming Data if data available'
+ * '<S6>'   : 'sads_balance_cubemodel/IMU I2C Read/Rotation Angles to Quaternions'
+ * '<S7>'   : 'sads_balance_cubemodel/Map PID to r_mmus2/Cross Product'
+ * '<S8>'   : 'sads_balance_cubemodel/Quaternion Multiplication/q0'
+ * '<S9>'   : 'sads_balance_cubemodel/Quaternion Multiplication/q1'
+ * '<S10>'  : 'sads_balance_cubemodel/Quaternion Multiplication/q2'
+ * '<S11>'  : 'sads_balance_cubemodel/Quaternion Multiplication/q3'
  */
 #endif                                 /* sads_balance_cubemodel_h_ */
 
