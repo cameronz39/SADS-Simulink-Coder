@@ -9,7 +9,7 @@
  *
  * Model version                  : 7.173
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Sat Jun  7 13:55:19 2025
+ * C/C++ source code generated on : Mon Jun 16 12:50:41 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -22,10 +22,31 @@
 #include "rtwtypes.h"
 #include "mw_stm32_i2c_ll.h"
 
-/* Custom Type definition for MATLABSystem: '<S5>/I2C Controller Read2' */
+/* Custom Type definition for MATLABSystem: '<S2>/I2C Controller Write1' */
 #include "mw_stm32_i2c_ll.h"
 #include "mw_stm32_i2c_ll.h"
 #include "mw_stm32_i2c_ll.h"
+#ifndef struct_tag_WKZZxaSTc4IMRsLrLiAxdC
+#define struct_tag_WKZZxaSTc4IMRsLrLiAxdC
+
+struct tag_WKZZxaSTc4IMRsLrLiAxdC
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  STM32_I2C_Struct_T * MW_I2C_HANDLE;
+  STM32_I2C_Struct_T MW_I2C_BlockStruct;
+};
+
+#endif                                 /* struct_tag_WKZZxaSTc4IMRsLrLiAxdC */
+
+#ifndef typedef_stm32cube_blocks_I2CControlle_T
+#define typedef_stm32cube_blocks_I2CControlle_T
+
+typedef struct tag_WKZZxaSTc4IMRsLrLiAxdC stm32cube_blocks_I2CControlle_T;
+
+#endif                             /* typedef_stm32cube_blocks_I2CControlle_T */
+
 #ifndef struct_tag_pu2p5c8LXP2BpmWuMrlbBG
 #define struct_tag_pu2p5c8LXP2BpmWuMrlbBG
 
@@ -40,12 +61,12 @@ struct tag_pu2p5c8LXP2BpmWuMrlbBG
 
 #endif                                 /* struct_tag_pu2p5c8LXP2BpmWuMrlbBG */
 
-#ifndef typedef_stm32cube_blocks_I2CControlle_T
-#define typedef_stm32cube_blocks_I2CControlle_T
+#ifndef typedef_stm32cube_blocks_I2CControl_f_T
+#define typedef_stm32cube_blocks_I2CControl_f_T
 
-typedef struct tag_pu2p5c8LXP2BpmWuMrlbBG stm32cube_blocks_I2CControlle_T;
+typedef struct tag_pu2p5c8LXP2BpmWuMrlbBG stm32cube_blocks_I2CControl_f_T;
 
-#endif                             /* typedef_stm32cube_blocks_I2CControlle_T */
+#endif                             /* typedef_stm32cube_blocks_I2CControl_f_T */
 
 #ifndef struct_tag_ayIc4J5yzVhZTlnbhUyj1C
 #define struct_tag_ayIc4J5yzVhZTlnbhUyj1C

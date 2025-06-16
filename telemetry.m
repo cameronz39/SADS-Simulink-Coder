@@ -3,7 +3,7 @@ s    = serialport(port, baud);
 flush(s);
 
 SYNC  = uint8(0xAA);
-FRAME = 39;
+FRAME = 33;
 
 sampleRate = 10;
 
@@ -35,10 +35,10 @@ while true
 
     roll = typecast(raw(2:5),'single');
     pitch = typecast(raw(6:9),'single');
-    trq = typecast(raw(38:39),'int16');
+    % trq = typecast(raw(38:39),'int16');
 
     % ------------- print raw bytes in HEX ---------------------
-    fprintf('Cnt: %d, Trq: %d, Roll: %.2f, Pitch: %.2f, RAW: %s\n', frameCount, trq, roll, pitch, sprintf('%02X ', raw));
+    fprintf('Cnt: %d, Roll: %.2f, Pitch: %.2f, RAW: %s\n', frameCount, roll, pitch, sprintf('%02X ', raw));
 
     % ----------- check keyboard ------------------------------------
     drawnow;
@@ -63,7 +63,7 @@ delete(hFig)
 %% Plot data and visually inspect for a good starting point
 clc
 clear
-raw_data_dir = 'passive_runs/June07_passive_8.mat';
+raw_data_dir = 'serial_16-Jun-2025';
 load(raw_data_dir)
 % load('serial_23-May-2025.mat')
 
@@ -94,8 +94,8 @@ for i = 1:numFrames % <---  REMEMBER TO INCLUDE/NOT INCLUDE RW WHEEL DATA HERE!!
     pos_x = typecast(currentFrame(26:29),'int32');
     pos_y = typecast(currentFrame(30:33),'int32');
 
-    wheel_vel(i) = typecast(currentFrame(34:37),'int32');
-    wheel_trq(i) = typecast(currentFrame(38:39),'int16');
+    % wheel_vel(i) = typecast(currentFrame(34:37),'int32');
+    % wheel_trq(i) = typecast(currentFrame(38:39),'int16');
 
     eulerAngles(i,:) = [roll pitch yaw];
     bodyRates(i,:) = [omega_x omega_y omega_z];

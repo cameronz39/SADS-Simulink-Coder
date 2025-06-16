@@ -7,7 +7,7 @@ J = [1.301  0 0;
       0  1.023  0;
        0  0 1.253];
 
-raw_data_dir = 'verification_runs/manual_balance_tumbling.mat';
+raw_data_dir = 'verification_runs/hybrid_verification4.mat';
 load(raw_data_dir)
 % load('serial_23-May-2025.mat')
 
@@ -45,10 +45,13 @@ for i = 1:numFrames
     stepperPos(i,:) = [pos_x pos_y];
 end
 
-t_start = 11; % <------ set a proper cutoff point
+
+figure
+plot(t,eulerAngles(:,1:2))
+t_start = 15; % <------ set a proper cutoff point
 start_index = find(t > t_start,1,'first');
 
-t_end = 35.12;
+t_end = 70;
 end_index = find(t > t_end,1,'first');
 
 t = t(start_index:end_index) - t(start_index);
@@ -56,34 +59,46 @@ t = t(start_index:end_index) - t(start_index);
 eulerAngles = eulerAngles(start_index:end_index,:);
 bodyRates = bodyRates(start_index:end_index,:);
 
-ang_accel = gradient(bodyRates,sampleTime);
+ang_accel = zeros(length(t),3);
+ang_accel(:,1) = gradient(bodyRates(:,1),sampleTime);
+ang_accel(:,2) = gradient(bodyRates(:,2),sampleTime);
+ang_accel(:,3) = gradient(bodyRates(:,3),sampleTime);
+% ang_accel = gradient(bodyRates,sampleTime);
 torque = zeros(length(t),3);
 torque_norm = zeros(length(t),1);
 for i = 1:length(t)
     omega = bodyRates(i,:)';
     omegaDot = ang_accel(i,:)';
-    torque(i,:) = J*omegaDot + cross(omega,J*omega);
+    % torque(i,:) = J*omegaDot + cross(omega,J*omega);
+    torque(i,:) = J*omegaDot;
     torque_norm(i) = norm(torque(i,:));
 end
 
 figure
-subplot(3,1,1)
+subplot(4,1,1)
 plot(t,eulerAngles(:,1:2),'LineWidth',1.5)
 grid on
 xlabel("Time [s]")
 ylabel("Euler Angles [deg]")
 legend("Roll","Pitch")
 
-subplot(3,1,2)
+subplot(4,1,2)
 plot(t,bodyRates(:,:),'LineWidth',1.5)
 grid on
 xlabel("Time [s]")
 ylabel("Body Rates [rad/s]")
 legend("\omega_x", "\omega_y", "\omega_z")
 
-subplot(3,1,3)
-plot(t,torque_norm,'LineWidth',1.3)
+subplot(4,1,3)
+plot(t,ang_accel,'LineWidth',1.3)
 xlabel("Time [s]")
 ylabel("Torque")
-legend("T_x", "T_y", "T_z")
+legend("T")
+grid on
+
+subplot(4,1,4)
+plot(t,torque,'LineWidth',1.3)
+xlabel("Time [s]")
+ylabel("Torque")
+legend("T_x","T_y","T_z")
 grid on

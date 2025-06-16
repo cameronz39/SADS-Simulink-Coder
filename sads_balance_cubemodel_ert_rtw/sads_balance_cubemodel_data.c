@@ -9,7 +9,7 @@
  *
  * Model version                  : 7.173
  * Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
- * C/C++ source code generated on : Sat Jun  7 13:55:19 2025
+ * C/C++ source code generated on : Mon Jun 16 12:50:41 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -28,23 +28,73 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
    */
   3200.0F,
 
+  /* Computed Parameter: DATA_Value
+   * Referenced by: '<S2>/DATA'
+   */
+  0,
+
+  /* Computed Parameter: StartX_Value
+   * Referenced by: '<S2>/Start X'
+   */
+  1600,
+
+  /* Computed Parameter: StartY_Value
+   * Referenced by: '<S2>/Start Y'
+   */
+  3200,
+
+  /* Computed Parameter: MID_Value
+   * Referenced by: '<S2>/MID'
+   */
+  8,
+
+  /* Computed Parameter: DATA_Value_b
+   * Referenced by: '<Root>/DATA'
+   */
+  0,
+
+  /* Computed Parameter: Saturation_UpperSat
+   * Referenced by: '<Root>/Saturation'
+   */
+  22400,
+
+  /* Computed Parameter: Saturation_LowerSat
+   * Referenced by: '<Root>/Saturation'
+   */
+  -22400,
+
+  /* Computed Parameter: Saturation1_UpperSat
+   * Referenced by: '<Root>/Saturation1'
+   */
+  17600,
+
+  /* Computed Parameter: Saturation1_LowerSat
+   * Referenced by: '<Root>/Saturation1'
+   */
+  -27200,
+
+  /* Computed Parameter: MID_Value_d
+   * Referenced by: '<Root>/MID'
+   */
+  1,
+
   /* Computed Parameter: g_body_Y0
-   * Referenced by: '<S5>/g_body'
+   * Referenced by: '<S6>/g_body'
    */
   0.0F,
 
   /* Computed Parameter: quat_Y0
-   * Referenced by: '<S5>/quat'
+   * Referenced by: '<S6>/quat'
    */
   0.0F,
 
   /* Computed Parameter: bodyRates_Y0
-   * Referenced by: '<S5>/bodyRates'
+   * Referenced by: '<S6>/bodyRates'
    */
   0.0F,
 
   /* Computed Parameter: eulerAngles_Y0
-   * Referenced by: '<S5>/eulerAngles'
+   * Referenced by: '<S6>/eulerAngles'
    */
   0.0F,
 
@@ -59,12 +109,12 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
   -1.11F,
 
   /* Computed Parameter: m_mmu_Gain
-   * Referenced by: '<S2>/m_mmu'
+   * Referenced by: '<S3>/m_mmu'
    */
   2.85F,
 
   /* Computed Parameter: Constant_Value
-   * Referenced by: '<S2>/Constant'
+   * Referenced by: '<S3>/Constant'
    */
   0.0F,
 
@@ -79,12 +129,12 @@ P_sads_balance_cubemodel_T sads_balance_cubemodel_P = {
   0.0F,
 
   /* Computed Parameter: Gain1_Gain
-   * Referenced by: '<S4>/Gain1'
+   * Referenced by: '<S5>/Gain1'
    */
   0.0174532924F,
 
   /* Computed Parameter: u2_Gain
-   * Referenced by: '<S6>/1//2'
+   * Referenced by: '<S7>/1//2'
    */
   0.5F,
 
