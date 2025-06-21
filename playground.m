@@ -47,11 +47,11 @@ end
 
 
 figure
-plot(t,eulerAngles(:,1:2))
+plot(t,eulerAngles(:,1:2)) % optionally plot raw data
 t_start = 15; % <------ set a proper cutoff point
 start_index = find(t > t_start,1,'first');
 
-t_end = 70;
+t_end = 88; % <--------
 end_index = find(t > t_end,1,'first');
 
 t = t(start_index:end_index) - t(start_index);
@@ -60,10 +60,58 @@ eulerAngles = eulerAngles(start_index:end_index,:);
 bodyRates = bodyRates(start_index:end_index,:);
 
 ang_accel = zeros(length(t),3);
+vel_x = bodyRates(:,1);
+
+% Design a FIR filter to differentiate --------------------------------
+figure
+pwelch(vel_x,[],[],[],sampleRate)
+Fpass = 0.05;
+Fstop = 0.3;
+Fs = sampleRate;
+
+d = designfilt('differentiatorfir', ...
+    'PassbandFrequency', Fpass, ...
+    'StopbandFrequency', Fstop, ...
+    'FilterOrder',100, ... 
+    'SampleRate', Fs);
+
+
+% zerophase(d,[],Fs)
+
+accel_x = filter(d,vel_x)/sampleTime;
+delay = mean(grpdelay(d));
+
+t_d = t(1:end-delay);
+
+accel_x_d = accel_x;
+accel_x_d(1:delay) = [];
+
+t_d(1:delay) = [];
+accel_x_d(1:delay) = [];
+
+
+figure
+subplot(2,1,1)
+plot(t,vel_x)
+xlabel('Time (s)')
+ylabel('Angular Velocity [rad/s]')
+xlim([t_d(1) t_d(end)])
+grid
+
+subplot(2,1,2)
+plot(t_d,accel_x_d)
+xlabel('Time (s)')
+ylabel('Angular Acceleration [rad/s]')
+yline(0)
+xlim([t_d(1) t_d(end)])
+grid
+
+
+%%
 ang_accel(:,1) = gradient(bodyRates(:,1),sampleTime);
 ang_accel(:,2) = gradient(bodyRates(:,2),sampleTime);
 ang_accel(:,3) = gradient(bodyRates(:,3),sampleTime);
-% ang_accel = gradient(bodyRates,sampleTime);
+
 torque = zeros(length(t),3);
 torque_norm = zeros(length(t),1);
 for i = 1:length(t)
